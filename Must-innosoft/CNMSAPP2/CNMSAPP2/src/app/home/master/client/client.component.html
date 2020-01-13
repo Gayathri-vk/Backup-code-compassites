@@ -1,0 +1,162 @@
+<button mat-fab color="primary" *ngIf="userRole === 1" class="floatBtn" (click)="addClient()">Add</button>
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container matColumnDef="CompanyName">
+      <mat-header-cell *matHeaderCellDef> Software Provider Company </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CompanyName}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="ClientCode">
+      <mat-header-cell *matHeaderCellDef> User Company Code </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ClientCode}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ClientName">
+      <mat-header-cell *matHeaderCellDef> User Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ClientName}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="ContactPerson">
+      <mat-header-cell *matHeaderCellDef> Contact Person </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ContactPerson}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="HandPhoneNo">
+      <mat-header-cell *matHeaderCellDef> Handphone No </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.HandPhoneNo}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Country_Name">
+      <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Country_Name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="NoofUser">
+      <mat-header-cell *matHeaderCellDef> No of User </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.NoofUser}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="CreatedUser">
+      <mat-header-cell *matHeaderCellDef> Created User </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CreatedUser}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ExprieDate">
+      <mat-header-cell *matHeaderCellDef> Exprie Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ExprieDate | date:'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon class="example-icon" (click)="editClient(element)" matTooltip="Edit">mode_edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="clientForm" (ngSubmit)="clientSubmit()">
+    <mat-form-field>
+      <mat-select placeholder="Software Provider Company" formControlName="CompanyId">
+        <mat-option *ngFor="let comp of companyList" [value]="comp.CompanyId">
+          {{ comp.CompanyName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="ClientName" placeholder="User Company Name" [readonly]="userRole != 1">
+    </mat-form-field>
+    <!--     <mat-form-field>
+      <input matInput formControlName="TaxNo" placeholder="Tax No.">
+    </mat-form-field> -->
+    <mat-form-field>
+      <input matInput formControlName="GSTNo" placeholder="GST No./Vat No.">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="ContactPerson" placeholder="Contact Person">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Designation" placeholder="Designation">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="HandPhoneNo" placeholder="Handphone No.">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="TelePhoneNo" placeholder="Telephone No.">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="EmailId" placeholder="Email Id">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Website" placeholder="Website">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="UintNo" placeholder="Uint No">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Building" placeholder="Building">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Street" placeholder="Street">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="City" placeholder="City">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="State" placeholder="State">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="StateCode" placeholder="State Code">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Pincode" placeholder="Pincode">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Country" formControlName="CountryId">
+        <mat-option *ngFor="let comp of countryList" [value]="comp.CountryId">
+          {{ comp.Country_Name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="userRole === 1">
+      <mat-select placeholder="No. of User" formControlName="NoofUser">
+        <mat-option [value]="10">10</mat-option>
+        <mat-option [value]="25">25</mat-option>
+        <mat-option [value]="50">50</mat-option>
+        <mat-option [value]="100">100</mat-option>
+        <!-- <mat-option [value]="-1">-1</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="userRole === 1">
+      <input matInput [matDatepicker]="picker" formControlName="ExprieDate" placeholder="Exprie Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Remark" placeholder="Remark">
+    </mat-form-field>
+
+    <div class="radioData">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="0">InActive</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!clientForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+  </form>
+</ngu-modal>

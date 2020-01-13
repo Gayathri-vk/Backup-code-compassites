@@ -1,0 +1,31 @@
+
+.okr-card{
+    border:1px solid #ccc;
+    border-radius:5px;
+    margin:3px 23px;
+}
+.okrAccordian{
+    padding:0 20px;
+}
+
+.empOkrContent{
+    padding: 0px 15px;
+    margin-bottom:15px;
+    .box{
+        border: 1px solid #8DD8FF;
+        padding-right:14px;
+        padding-left:14px;
+        cursor:pointer;
+    }
+    .accordian{
+        border: 1px solid #eee !important;
+        
+    }
+}
+.collapsible {
+    display: none;
+  }
+  
+  .collapsible.open {
+    display: block;
+  }

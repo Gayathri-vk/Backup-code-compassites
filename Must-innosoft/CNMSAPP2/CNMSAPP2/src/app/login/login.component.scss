@@ -1,0 +1,86 @@
+@import './../../_vari';
+* {
+    box-sizing: border-box;
+}
+
+.loginerr {
+    color: red;
+    border: 1px solid;
+    padding: 4px;
+    border-radius: 30px;
+}
+
+mat-form-field {
+    width: 100%;
+    padding: 5px 0;
+}
+
+.login {
+    background: #fff;
+    padding: 2em;
+    max-width: 400px;
+    text-align: center;
+    overflow: hidden;
+    @include xsScreen {
+        .form-control {
+            margin: 37px 0;
+        }
+    }
+    @include smScreen {
+        @include boxShadow(30px);
+        margin: 8% auto auto;
+    }
+    h1 {
+        font-weight: 900;
+    }
+    img {
+        width: 130px;
+        border-radius: 50%;
+    }
+    .btn {
+        transition: transform .4s ease;
+        &:disabled {
+            opacity: .7;
+        }
+    }
+    .requesting {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+}
+
+.input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    color: #555;
+    box-sizing: border-box;
+    font-family: 'Arvo';
+    font-size: 18px;
+    height: 50px;
+    left: 0;
+    margin: -25px 0 0 -100px;
+    padding: 10px 0px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    &:focus {
+        outline: none;
+    }
+}
+
+.underlines {
+    background-color: dodgerblue;
+    display: inline-block;
+    height: 2px;
+    left: 50px;
+    margin-top: -4px;
+    position: absolute;
+    top: 185px;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    width: 202px;
+}

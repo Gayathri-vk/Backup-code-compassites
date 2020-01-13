@@ -1,0 +1,35 @@
+.Blog{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+.Blog header{
+    width:100%;
+}
+.Blog ul{
+    padding:0;
+    margin:0;
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+}
+
+.Blog li{
+    display:inline-block;
+    margin:20px;
+}
+
+.Blog a{
+    text-decoration: none;
+    color:black;
+}
+.Blog a:hover, .Blog a:active{
+    color:#fa923f;
+
+}
+.Blog section{
+    
+    width:100%;
+}

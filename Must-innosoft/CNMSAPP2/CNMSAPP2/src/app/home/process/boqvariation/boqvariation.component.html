@@ -1,0 +1,71 @@
+<div #gantt_here style='width: 100%; height: 100%;'></div>
+<ngu-modal [MIndex]="sampleText">
+  <h4>Gantt Form</h4>
+  <form [formGroup]="ganttForm" (ngSubmit)="save()">
+    <mat-form-field>
+      <!-- <mat-select formControlName="location" [disabled]="countval > 1" placeholder="location"> -->
+      <mat-select formControlName="location" placeholder="location">
+        <mat-option *ngFor="let emp of ProjectDescriptionDet" [value]="emp.Id">
+          {{ emp.Description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="VARIATIONS" readonly=true formControlName="mainitem" placeholder="Main Item">
+
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="subitem" placeholder="Sub Item" [disabled]="countval === 0">
+        <mat-option *ngFor="let emp of MainItemMasterDet" [value]="emp.SubItemId">
+          {{ emp.SubItemName }}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 1">
+      <input matInput formControlName="subsubitem" placeholder="Sub Sub Item">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="boq" placeholder="BOQ Ref">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 1">
+      <input matInput formControlName="task" placeholder="Task">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 1">
+      <mat-select matInput formControlName="unit" placeholder="Unit">
+        <mat-option value="KG">KG</mat-option>
+        <mat-option value="M">M</mat-option>
+        <mat-option value="M2">M2</mat-option>
+        <mat-option value="M3">M3</mat-option>
+        <mat-option value="No">No</mat-option>
+        <mat-option value="Sum">Sum</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 1">
+      <input matInput formControlName="qty" placeholder="Qty">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 1">
+      <input matInput formControlName="urate" placeholder="Rate">
+    </mat-form-field>
+
+    <mat-form-field (click)="picker.open()">
+      <input matInput [matDatepicker]="picker" formControlName="start_date" [readonly]="true" placeholder="Start Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field (click)="picker1.open()">
+      <input matInput [matDatepicker]="picker1" formControlName="end_date" [readonly]="true" placeholder="End Date">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <br>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="!ganttForm.valid">Save</button>
+    <button type="button" mat-raised-button color="warn" (click)="remove()">Delete</button>
+
+    <button type="button" mat-raised-button color="accent" (click)="cancel()">Close</button>
+  </form>
+</ngu-modal>
+<div style="position: relative;top:1px">
+  <button mat-raised-button color="primary" (click)="renderer()">BOQ</button>
+</div>

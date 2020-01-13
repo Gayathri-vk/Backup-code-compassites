@@ -1,0 +1,176 @@
+<button mat-fab color="primary" *ngIf="userRole === 2" class="floatBtn" (click)="addproject()"> Add</button>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="ClientName">
+      <mat-header-cell *matHeaderCellDef> User Company </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ClientName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ProjectName">
+      <mat-header-cell *matHeaderCellDef> Project Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ProjectName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ProjectLocation">
+      <mat-header-cell *matHeaderCellDef> Project Location </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ProjectLocation}} </mat-cell>
+    </ng-container>
+    <!-- <ng-container matColumnDef="ProjectIncharge">
+      <mat-header-cell *matHeaderCellDef> Project Incharge </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ProjectIncharge}} </mat-cell>
+    </ng-container> -->
+    <ng-container matColumnDef="Start_Date">
+      <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Start_Date | date:'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="End_Date">
+      <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.End_Date | date:'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ProjectDuration">
+      <mat-header-cell *matHeaderCellDef> Project Duration </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ProjectDuration}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Fromday">
+        <mat-header-cell *matHeaderCellDef> Working day From </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Fromday}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Today">
+        <mat-header-cell *matHeaderCellDef> Working day To </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Today}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="Fromtime">
+      <mat-header-cell *matHeaderCellDef> Start Time </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Fromtime}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Totime">
+      <mat-header-cell *matHeaderCellDef> End Time </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Totime}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon class="example-icon" (click)="editproject(element)" matTooltip="Edit">mode_edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="projectForm" (ngSubmit)="projectSubmit()">
+    <mat-form-field>
+      <mat-select placeholder="User Company" formControlName="ClientId">
+        <mat-option *ngFor="let comp of clientList" [value]="comp.ClientId">
+          {{ comp.ClientName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="ProjectName" placeholder="Project Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="ProjectLocation" placeholder="Project Location">
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <input matInput formControlName="ProjectIncharge" placeholder="Project Incharge">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="ContactNo" placeholder="Contact No">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="EmailId" placeholder="EmailId">
+    </mat-form-field> -->
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" formControlName="Start_Date" placeholder="Start Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" formControlName="End_Date" placeholder="End Date">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Working day From" formControlName="Fromday">
+        <mat-option [value]="'0'">Sunday</mat-option>
+        <mat-option [value]="'1'">Monday</mat-option>
+        <mat-option [value]="'2'">Tuesday</mat-option>
+        <mat-option [value]="'3'">Wednesday</mat-option>
+        <mat-option [value]="'4'">Thursday</mat-option>
+        <mat-option [value]="'5'">Friday</mat-option>
+        <mat-option [value]="'6'">Saturday</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Working day To" formControlName="Today">
+        <mat-option [value]="'0'">Sunday</mat-option>
+        <mat-option [value]="'1'">Monday</mat-option>
+        <mat-option [value]="'2'">Tuesday</mat-option>
+        <mat-option [value]="'3'">Wednesday</mat-option>
+        <mat-option [value]="'4'">Thursday</mat-option>
+        <mat-option [value]="'5'">Friday</mat-option>
+        <mat-option [value]="'6'">Saturday</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Start Time" formControlName="Fromtime">
+        <mat-option [value]="'0'">0</mat-option>
+        <mat-option [value]="'1'">1</mat-option>
+        <mat-option [value]="'2'">2</mat-option>
+        <mat-option [value]="'3'">3</mat-option>
+        <mat-option [value]="'4'">4</mat-option>
+        <mat-option [value]="'5'">5</mat-option>
+        <mat-option [value]="'6'">6</mat-option>
+        <mat-option [value]="'7'">7</mat-option>
+        <mat-option [value]="'8'">8</mat-option>
+        <mat-option [value]="'9'">9</mat-option>
+        <mat-option [value]="'10'">10</mat-option>
+        <mat-option [value]="'11'">11</mat-option>
+        <mat-option [value]="'12'">12</mat-option>
+        \
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="End Time" formControlName="Totime">
+        <mat-option [value]="'13'">13</mat-option>
+        <mat-option [value]="'14'">14</mat-option>
+        <mat-option [value]="'15'">15</mat-option>
+        <mat-option [value]="'16'">16</mat-option>
+        <mat-option [value]="'17'">17</mat-option>
+        <mat-option [value]="'18'">18</mat-option>
+        <mat-option [value]="'19'">19</mat-option>
+        <mat-option [value]="'20'">20</mat-option>
+        <mat-option [value]="'21'">21</mat-option>
+        <mat-option [value]="'22'">22</mat-option>
+        <mat-option [value]="'23'">23</mat-option>
+        <mat-option [value]="'24'">24</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <input matInput [matTimepicker]="picker" placeholder="Choose a time">
+      <mat-timepicker-toggle matSuffix [for]="picker"></mat-timepicker-toggle>
+      <mat-timepicker #picker color="primary"></mat-timepicker>
+    </mat-form-field> -->
+    <div class="radioData">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="0">InActive</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!projectForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+  </form>
+</ngu-modal>

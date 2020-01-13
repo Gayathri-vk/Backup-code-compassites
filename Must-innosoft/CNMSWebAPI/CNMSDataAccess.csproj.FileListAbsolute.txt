@@ -1,0 +1,11 @@
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\bin\Release\CNMSDataAccess.dll.config
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\bin\Release\CNMSDataAccess.dll
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\bin\Release\CNMSDataAccess.pdb
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\bin\Release\EntityFramework.dll
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\bin\Release\EntityFramework.SqlServer.dll
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\bin\Release\EntityFramework.xml
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\bin\Release\EntityFramework.SqlServer.xml
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\obj\Release\CNMSDataAccess.csprojResolveAssemblyReference.cache
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\obj\Release\CNMSDataAccess.csproj.CoreCompileInputs.cache
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\obj\Release\CNMSDataAccess.dll
+c:\users\azees\source\repos\CNMSWebAPI\CNMSDataAccess\obj\Release\CNMSDataAccess.pdb

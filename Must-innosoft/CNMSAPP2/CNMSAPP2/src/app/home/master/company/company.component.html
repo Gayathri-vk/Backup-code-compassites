@@ -1,0 +1,118 @@
+<button mat-fab color="primary" *ngIf="userRole === 0" id="btnadd" class="addCompany" (click)="addCompany()">Add</button>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="CompanyName">
+      <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CompanyName}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="UintNo">
+      <mat-header-cell *matHeaderCellDef> Uint No </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.UintNo}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Building">
+      <mat-header-cell *matHeaderCellDef> Building </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Building}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="State">
+      <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.State}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Country">
+      <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Country}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AuthorisedPerson">
+      <mat-header-cell *matHeaderCellDef> Authorised Person </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.AuthorisedPerson}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="HandPhoneNo">
+      <mat-header-cell *matHeaderCellDef> Handphone No </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.HandPhoneNo}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon class="example-icon" (click)="editCompany(element)" matTooltip="Edit">mode_edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="companyForm" (ngSubmit)="companySubmit()">
+    <mat-form-field>
+      <input matInput formControlName="CompanyName" placeholder="Company">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="UintNo" placeholder="Uint No">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Building" placeholder="Building">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Street" placeholder="Street">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="City" placeholder="City">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="State" placeholder="State">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="StateCode" placeholder="State Code">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Pincode" placeholder="Pincode">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Country" placeholder="Country">
+    </mat-form-field>
+    <!--     <mat-form-field>
+      <input matInput formControlName="TaxNo" placeholder="Tax No.">
+    </mat-form-field> -->
+    <mat-form-field>
+      <input matInput formControlName="GSTNo" placeholder="GST No./Vat No.">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="AuthorisedPerson" placeholder="Authorised Person">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="HandPhoneNo" placeholder="Handphone No.">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="TelePhoneNo" placeholder="Telephone No.">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="EmailId" placeholder="Email Id">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Website" placeholder="Website">
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!companyForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+  </form>
+</ngu-modal>

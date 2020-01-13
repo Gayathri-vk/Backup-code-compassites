@@ -1,0 +1,218 @@
+<div class="mydesc">
+  <mat-card>
+    <div class="externalHeader">
+      <h4>BOQ Revise Process</h4>
+      <button (click)="boqreviseSubmit()" mat-raised-button color="primary">Save</button>
+    </div>
+    <mat-list>
+      <mat-list-item>
+        <div class="mytableSel">
+          <!-- <div class="innerTabl">MainItem</div> -->
+          <div class="innerTabl">SubItem</div>
+          <div class="innerTabl">SubSubItem</div>
+          <div class="innerTabl">Completed %</div>
+          <div class="innerTabl">Start Date</div>
+          <div class="innerTabl">End Date</div>
+          <div class="innerTabl">ReviseStart Date</div>
+          <div class="innerTabl">ReviseEnd Date</div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of boqrevlist">
+        <div class="mytableSel">
+          <!--<div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.MainItem">
+            </mat-form-field>
+          </div> -->
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.SubItem" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.SubSubItem" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.WorkdonePer" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.start_date" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.end_date" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field (click)="picker.open()">
+              <input matInput [matDatepicker]="picker" [value]="list.revice_start_date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker1" [(ngModel)]="list.revice_end_date">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-card>
+  <div style="position: relative;top:1px">
+    <button mat-raised-button color="primary" (click)="Freeze()">Freeze Revise</button>
+  </div>
+</div>
+
+<div class="mydesc">
+  <mat-card>
+    <div class="externalHeader">
+      <h4>BOQ Variation Revise Process</h4>
+      <button (click)="boqVareviseSubmit()" mat-raised-button color="primary">Save</button>
+    </div>
+    <mat-list>
+      <mat-list-item>
+        <div class="mytableSel">
+
+          <div class="innerTabl">Task</div>
+          <div class="innerTabl">SubSubItem</div>
+          <div class="innerTabl">Completed %</div>
+          <div class="innerTabl">Start Date</div>
+          <div class="innerTabl">End Date</div>
+          <div class="innerTabl">ReviseStart Date</div>
+          <div class="innerTabl">ReviseEnd Date</div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of boqvarrevlist">
+        <div class="mytableSel">
+
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.SubItem" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.SubSubItem" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.WorkdonePer" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.start_date" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.end_date" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field (click)="picker.open()">
+              <input matInput [matDatepicker]="picker" [value]="list.revice_start_date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker1" [(ngModel)]="list.revice_end_date">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-card>
+  <div style="position: relative;top:1px">
+    <button mat-raised-button color="primary" (click)="FreezeVar()">Freeze BOQ Variation</button>
+  </div>
+</div>
+
+<ngu-modal [MIndex]="sampleText">
+  <div class="mydesc">
+    <mat-card>
+      <div class="externalHeader">
+        <h4>BOQ Revise 100% Completed Details</h4>
+        <button type="submit" (click)="Freezesave()" mat-raised-button color="primary">Freeze</button>
+
+        <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+      </div>
+      <mat-list>
+        <mat-list-item>
+          <div class="mytableSel">
+            <!-- <div class="innerTabl">MainItem</div> -->
+            <div class="innerTabl">SubItem</div>
+            <div class="innerTabl">SubSubItem</div>
+
+            <div class="innerTabl">Start Date</div>
+            <div class="innerTabl">End Date</div>
+            <div class="innerTabl">Revise Start Date</div>
+            <div class="innerTabl">Revise End Date</div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let list of boqrevcoplist">
+          <div class="mytableSel">
+
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [(ngModel)]="list.SubItem" [readonly]="true">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [(ngModel)]="list.SubSubItem" [readonly]="true">
+              </mat-form-field>
+            </div>
+
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [(ngModel)]="list.start_date" [readonly]="true">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [(ngModel)]="list.end_date" [readonly]="true">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [readonly]="true" [(ngModel)]="list.revice_start_date">
+
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [readonly]="true" [(ngModel)]="list.revice_end_date">
+
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-card>
+
+  </div>
+
+
+
+</ngu-modal>

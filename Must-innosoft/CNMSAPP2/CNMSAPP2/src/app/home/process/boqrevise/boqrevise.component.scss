@@ -1,0 +1,59 @@
+.selectedProj {
+  text-align: center;
+  padding: 24px 0 0;
+  width: 10%;
+  position: relative;
+  left: 50px;
+}
+.mydesc {
+  padding: 20px;
+  mat-card {
+    margin-bottom: 22px;
+    .externalHeader {
+      display: flex;
+      align-items: center;
+      h4,
+      div {
+        flex: 1;
+        margin: 0px;
+      }
+    }
+  }
+  .mytableSel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+
+    .innerTabl {
+      flex: 1;
+      mat-form-field {
+        transform: translateY(11px);
+        width: 85%;
+      }
+    }
+  }
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  background: white;
+  margin: 15px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}

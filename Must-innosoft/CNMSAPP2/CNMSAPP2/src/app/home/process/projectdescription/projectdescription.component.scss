@@ -1,0 +1,70 @@
+// .mat-table {
+//   display: block;
+// }
+
+// .mat-row,
+// .mat-header-row {
+//   display: flex;
+//   border-bottom-width: 1px;
+//   border-bottom-style: solid;
+//   align-items: center;
+//   min-height: 48px;
+//   padding: 0 24px;
+// }
+
+// .mat-cell,
+// .mat-header-cell {
+//   flex: 1;
+//   overflow: hidden;
+//   word-wrap: break-word;
+// }
+// .panel {
+//   // box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+// }
+// .panel-body {
+//   padding: 15px 22px;
+// }
+// .select {
+//   width: 100px;
+// }
+.selectedProj {
+  text-align: center;
+  padding: 24px 0 0;
+}
+.mydesc {
+  padding: 20px;
+  mat-card {
+    margin-bottom: 22px;
+    .externalHeader {
+      display: flex;
+      align-items: center;
+      h4,
+      div {
+        flex: 1;
+        margin: 0px;
+      }
+    }
+  }
+  .mytableSel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    .innerTabl {
+      flex: 1;
+      mat-form-field {
+        transform: translateY(12px);
+      }
+    }
+  }
+}
+
+.saveWork {
+  display: block;
+  margin: 0 auto;
+}
+.projType {
+  background: #ededed;
+  margin: -24px -24px 20px -24px !important;
+  padding: 0 27px;
+}

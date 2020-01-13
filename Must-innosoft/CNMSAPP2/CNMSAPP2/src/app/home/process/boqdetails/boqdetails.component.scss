@@ -1,0 +1,78 @@
+:host {
+  display: block;
+  height: 100%;
+}
+.selectedProj {
+  text-align: center;
+  padding: 24px 0 0;
+}
+.mydesc {
+  width: 120%;
+  padding: 20px;
+  mat-card {
+    margin-bottom: 22px;
+    .externalHeader {
+      display: flex;
+      align-items: center;
+      h4,
+      div {
+        flex: 1;
+        margin: 0px;
+      }
+    }
+  }
+  .mytableSel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    .innerTabl {
+      flex: 1;
+      mat-form-field {
+        transform: translateY(12px);
+      }
+    }
+  }
+}
+.saveWork {
+  display: block;
+  margin: 0 auto;
+}
+
+tree-group {
+  width: calc(100% - 10px);
+}
+
+tree-group:first-child {
+  display: block;
+}
+.my-form {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  z-index: 3;
+  display: none;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 20px 20px 5px 20px;
+
+  font-family: Tahoma;
+  font-size: 10pt;
+
+  .input[type='button'] {
+    margin: 10px;
+  }
+}
+mat-form-field {
+  width: 100%;
+  h4 {
+    margin: 0 0 10px;
+    font-weight: 900;
+    font-size: 20px;
+  }
+}
+.columns {
+  width: 110px;
+}
+
+//  position: absolute;top: 150px;left: 100px;z-index: 3;display: none;background-color: white;border: 1px solid gray;padding: 20px 20px 5px 20px;font-family: Tahoma;font-size: 10pt;"

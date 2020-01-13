@@ -1,0 +1,100 @@
+<!-- <div class="navDiv">
+    <div class="mainNav">
+        <span (click)="toggleMenu(0)">
+            <i class="fa fa-fw fa-bars"></i>
+        </span>
+        <span>SheikAlthaf</span>
+    </div>
+    <div class="sideMenu">
+        <nav>
+            <div class="navFor">
+                <div (click)="toggleMenu(0)">
+                    <i class="fa fa-fw fa-bars"></i>
+                </div>
+            </div>
+            <div
+                class="navFor openNav"
+                #openNav
+                routerLinkActive="active"
+                *ngFor="let nav of naviList; let i = index"
+            >
+                <div (click)="openSubMenu(i)" #openNavClick>
+                    <i
+                        class="fa fa-fw"
+                        [ngClass]="nav.icon || 'fa-home'"
+                    ></i>
+                    <p>{{nav.main}}</p>
+                </div>
+                <ul>
+                    <li *ngFor="let list of nav.list">
+                        <a
+                            (click)="toggleMenu(1)"
+                            routerLink="{{list.route}}"
+                            routerLinkActive="active"
+                        >
+                            <span>
+                                <i
+                                    class="fa fa-fw fa-home"
+                                    [ngClass]="list.icon || 'fa-home'"
+                                ></i>
+                            </span>
+                            {{list.name}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div
+                class="navFor openNav"
+                #openNav
+                [routerLinkActive]="'active'"
+            >
+                <div (click)="openSubMenu(10)">
+                    <i class="fa fa-fw fa-user"></i>
+                    <p>User</p>
+                </div>
+                <ul>
+                    <li>
+                        <a
+                            (click)="toggleMenu(1)"
+                            [routerLink]="'user/profile'"
+                            [routerLinkActive]="'active'"
+                        >
+                            <span>
+                                <i class="fa fa-fw fa-sign-out"></i>
+                            </span>
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="logOut()">
+                            <span>
+                                <i class="fa fa-fw fa-sign-out"></i>
+                            </span>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div
+        class="overlayDiv"
+        (click)="toggleMenu(0)"
+    ></div>
+</div> -->
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let nav of naviList">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{nav.main}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-list role="list">
+      <mat-list-item *ngFor="let list of nav.list" role="listitem" mat-button routerLink="{{list.route}}" routerLinkActive="active">{{list.name}}</mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+
+</mat-accordion>

@@ -1,0 +1,28 @@
+<div style="position: relative;top:1px">
+  <button mat-raised-button color="accent" onclick="gantt.exportToPDF({raw:true})">Export to PDF</button>
+  <button mat-raised-button color="accent" onclick="gantt.exportToPNG({raw:true})">Export to PNG</button>
+  <button mat-raised-button color="accent" onclick="gantt.exportToExcel({visual:true})">Export to Excel</button>
+  <button mat-raised-button color="primary" (click)="Expanding()">Expand All</button>
+  <button mat-raised-button color="primary" (click)="collapsing()">Collapse All </button>
+  <mat-select placeholder="Calender">
+    <mat-option *ngFor="let Calende of Calenders" [value]="Calende.code" (onSelectionChange)="Calenderchange($event, Calende)">
+      {{ Calende.name }}
+    </mat-option>
+  </mat-select>
+  <!-- <button mat-raised-button color="primary" (click)="setScaleday()">Day scale</button>
+  <button mat-raised-button color="primary" (click)="setScaleweek()">Week scale</button>
+  <button mat-raised-button color="primary" (click)="setScalemonth()">Month scale</button>
+  <button mat-raised-button color="primary" (click)="setScaleyear()">Year scale</button> -->
+  <button mat-raised-button color="primary" (click)="Refresh()">Refresh</button>
+  <button mat-raised-button color="warn" (click)="showcritical_path()">Critical Path</button>
+
+
+
+
+  <!-- <button mat-raised-button color="warn" (click)="showcritical()">Critical Path</button> -->
+  <!-- <button mat-raised-button color="primary" (click)="Reset()">Reset</button> -->
+</div>
+
+
+<div #gantt_here style='width: 100%; height: 94%;'></div>
+<!-- <br> -->

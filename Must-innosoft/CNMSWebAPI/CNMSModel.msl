@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ConstructionDBModelStoreContainer" CdmEntityContainer="ConstructionDBEntities">
+    <EntitySetMapping Name="BlockDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.BlockDetail">
+        <MappingFragment StoreEntitySet="BlockDetails">
+          <ScalarProperty Name="BlockQty" ColumnName="BlockQty" />
+          <ScalarProperty Name="UpperRoof" ColumnName="UpperRoof" />
+          <ScalarProperty Name="LoweRoof" ColumnName="LoweRoof" />
+          <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoqDailyProcesses">
+      <EntityTypeMapping TypeName="ConstructionDBModel.BoqDailyProcess">
+        <MappingFragment StoreEntitySet="BoqDailyProcess">
+          <ScalarProperty Name="WorkdoneType" ColumnName="WorkdoneType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+          <ScalarProperty Name="WorkdonePer" ColumnName="WorkdonePer" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoqEntryDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.BoqEntryDetail">
+        <MappingFragment StoreEntitySet="BoqEntryDetails">
+          <ScalarProperty Name="RDuration" ColumnName="RDuration" />
+          <ScalarProperty Name="RVEndDate" ColumnName="RVEndDate" />
+          <ScalarProperty Name="RVStartDate" ColumnName="RVStartDate" />
+          <ScalarProperty Name="Criticaltaskid" ColumnName="Criticaltaskid" />
+          <ScalarProperty Name="Predec" ColumnName="Predec" />
+          <ScalarProperty Name="dep" ColumnName="dep" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="Workdonecost" ColumnName="Workdonecost" />
+          <ScalarProperty Name="BOQRefId" ColumnName="BOQRefId" />
+          <ScalarProperty Name="BOQType" ColumnName="BOQType" />
+          <ScalarProperty Name="Workdonedate" ColumnName="Workdonedate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="RefId" ColumnName="RefId" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="WorkdonePer" ColumnName="WorkdonePer" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <ScalarProperty Name="UnitRate" ColumnName="UnitRate" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Task" ColumnName="Task" />
+          <ScalarProperty Name="BoqRef" ColumnName="BoqRef" />
+          <ScalarProperty Name="SubSubItem" ColumnName="SubSubItem" />
+          <ScalarProperty Name="SubItem" ColumnName="SubItem" />
+          <ScalarProperty Name="MainItem" ColumnName="MainItem" />
+          <ScalarProperty Name="MainItemId" ColumnName="MainItemId" />
+          <ScalarProperty Name="DescriptionName" ColumnName="DescriptionName" />
+          <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoqReviseDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.BoqReviseDetail">
+        <MappingFragment StoreEntitySet="BoqReviseDetails">
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="FDate" ColumnName="FDate" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="REndDate" ColumnName="REndDate" />
+          <ScalarProperty Name="RStartDate" ColumnName="RStartDate" />
+          <ScalarProperty Name="ReviseType" ColumnName="ReviseType" />
+          <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+          <ScalarProperty Name="ReviseId" ColumnName="ReviseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="ConstructionDBModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Modfied_Date" ColumnName="Modfied_Date" />
+          <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="NoofUser" ColumnName="NoofUser" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="UintNo" ColumnName="UintNo" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+          <ScalarProperty Name="HandPhoneNo" ColumnName="HandPhoneNo" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+          <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.ClientMaster">
+        <MappingFragment StoreEntitySet="ClientMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="UintNo" ColumnName="UintNo" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+          <ScalarProperty Name="HandPhoneNo" ColumnName="HandPhoneNo" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+          <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientRegs">
+      <EntityTypeMapping TypeName="ConstructionDBModel.ClientReg">
+        <MappingFragment StoreEntitySet="ClientReg">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="License" ColumnName="License" />
+          <ScalarProperty Name="Modfied_Date" ColumnName="Modfied_Date" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="NoofUser" ColumnName="NoofUser" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="UintNo" ColumnName="UintNo" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+          <ScalarProperty Name="HandPhoneNo" ColumnName="HandPhoneNo" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+          <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="ConstructionDBModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+          <ScalarProperty Name="HandPhoneNo" ColumnName="HandPhoneNo" />
+          <ScalarProperty Name="AuthorisedPerson" ColumnName="AuthorisedPerson" />
+          <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+          <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="UintNo" ColumnName="UintNo" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="ConstructionDBModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Country_Currency" ColumnName="Country_Currency" />
+          <ScalarProperty Name="Country_TimeZone" ColumnName="Country_TimeZone" />
+          <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+          <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatabaseDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.DatabaseDetail">
+        <MappingFragment StoreEntitySet="DatabaseDetails">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DB_Password" ColumnName="DB_Password" />
+          <ScalarProperty Name="DB_Username" ColumnName="DB_Username" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="Server_Name" ColumnName="Server_Name" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="DatabaseId" ColumnName="DatabaseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoundationDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.FoundationDetail">
+        <MappingFragment StoreEntitySet="FoundationDetails">
+          <ScalarProperty Name="FoundationName" ColumnName="FoundationName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="FoundationId" ColumnName="FoundationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.LocationMaster">
+        <MappingFragment StoreEntitySet="LocationMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MainItemMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.MainItemMaster">
+        <MappingFragment StoreEntitySet="MainItemMaster">
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="MainItemName" ColumnName="MainItemName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="MainItemId" ColumnName="MainItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.MenuDetail">
+        <MappingFragment StoreEntitySet="MenuDetails">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="Formname" ColumnName="Formname" />
+          <ScalarProperty Name="MID" ColumnName="MID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectDescriptions">
+      <EntityTypeMapping TypeName="ConstructionDBModel.ProjectDescription">
+        <MappingFragment StoreEntitySet="ProjectDescription">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Mezanine" ColumnName="Mezanine" />
+          <ScalarProperty Name="Podium" ColumnName="Podium" />
+          <ScalarProperty Name="Basement" ColumnName="Basement" />
+          <ScalarProperty Name="Foundation" ColumnName="Foundation" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="PDId" ColumnName="PDId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectDescriptionDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.ProjectDescriptionDetail">
+        <MappingFragment StoreEntitySet="ProjectDescriptionDetails">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="RefId" ColumnName="RefId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.ProjectMaster">
+        <MappingFragment StoreEntitySet="ProjectMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProjectDuration" ColumnName="ProjectDuration" />
+          <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+          <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="ProjectIncharge" ColumnName="ProjectIncharge" />
+          <ScalarProperty Name="ProjectLocation" ColumnName="ProjectLocation" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubItemMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.SubItemMaster">
+        <MappingFragment StoreEntitySet="SubItemMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SubItemDescription" ColumnName="SubItemDescription" />
+          <ScalarProperty Name="SubItemName" ColumnName="SubItemName" />
+          <ScalarProperty Name="MainItemId" ColumnName="MainItemId" />
+          <ScalarProperty Name="SubItemId" ColumnName="SubItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubSubItemMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.SubSubItemMaster">
+        <MappingFragment StoreEntitySet="SubSubItemMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SubSubItemDescription" ColumnName="SubSubItemDescription" />
+          <ScalarProperty Name="SubSubItemName" ColumnName="SubSubItemName" />
+          <ScalarProperty Name="SubItemId" ColumnName="SubItemId" />
+          <ScalarProperty Name="SubSubItemId" ColumnName="SubSubItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="ConstructionDBModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+          <ScalarProperty Name="User_RoleId" ColumnName="User_RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoleMenus">
+      <EntityTypeMapping TypeName="ConstructionDBModel.UserRoleMenu">
+        <MappingFragment StoreEntitySet="UserRoleMenu">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MID" ColumnName="MID" />
+          <ScalarProperty Name="User_RoleId" ColumnName="User_RoleId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserValidities">
+      <EntityTypeMapping TypeName="ConstructionDBModel.UserValidity">
+        <MappingFragment StoreEntitySet="UserValidity">
+          <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+          <ScalarProperty Name="MaintanceDate" ColumnName="MaintanceDate" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ValidityId" ColumnName="ValidityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariationMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.VariationMaster">
+        <MappingFragment StoreEntitySet="VariationMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="VariationName" ColumnName="VariationName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="VID" ColumnName="VID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.SupplierMaster">
+        <MappingFragment StoreEntitySet="SupplierMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Modfied_Date" ColumnName="Modfied_Date" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPassResets">
+      <EntityTypeMapping TypeName="ConstructionDBModel.UserPassReset">
+        <MappingFragment StoreEntitySet="UserPassReset">
+          <ScalarProperty Name="Up_Date" ColumnName="Up_Date" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserRestId" ColumnName="UserRestId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetails">
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Loginuser" ColumnName="Loginuser" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Modfied_Date" ColumnName="Modfied_Date" />
+          <ScalarProperty Name="Modified_by" ColumnName="Modified_by" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+          <ScalarProperty Name="MaintanceDate" ColumnName="MaintanceDate" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOQLinkDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.BOQLinkDetail">
+        <MappingFragment StoreEntitySet="BOQLinkDetails">
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="Mcolor" ColumnName="Mcolor" />
+          <ScalarProperty Name="LinkType" ColumnName="LinkType" />
+          <ScalarProperty Name="TargetId" ColumnName="TargetId" />
+          <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+          <ScalarProperty Name="BoqLinkId" ColumnName="BoqLinkId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CriticalPathDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.CriticalPathDetail">
+        <MappingFragment StoreEntitySet="CriticalPathDetails">
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="Criticaltaskid" ColumnName="Criticaltaskid" />
+          <ScalarProperty Name="Slack" ColumnName="Slack" />
+          <ScalarProperty Name="LF" ColumnName="LF" />
+          <ScalarProperty Name="LS" ColumnName="LS" />
+          <ScalarProperty Name="Predec" ColumnName="Predec" />
+          <ScalarProperty Name="EF" ColumnName="EF" />
+          <ScalarProperty Name="ES" ColumnName="ES" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="dep" ColumnName="dep" />
+          <ScalarProperty Name="BOQRefId" ColumnName="BOQRefId" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="CriticalId" ColumnName="CriticalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HolidayMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.HolidayMaster">
+        <MappingFragment StoreEntitySet="HolidayMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+          <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="HId" ColumnName="HId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExternalWorkDetails">
+      <EntityTypeMapping TypeName="ConstructionDBModel.ExternalWorkDetail">
+        <MappingFragment StoreEntitySet="ExternalWorkDetails">
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Units" ColumnName="Units" />
+          <ScalarProperty Name="ExternalWork" ColumnName="ExternalWork" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ExDetId" ColumnName="ExDetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExternalWorkMasters">
+      <EntityTypeMapping TypeName="ConstructionDBModel.ExternalWorkMaster">
+        <MappingFragment StoreEntitySet="ExternalWorkMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExternalWork" ColumnName="ExternalWork" />
+          <ScalarProperty Name="ExId" ColumnName="ExId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

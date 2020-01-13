@@ -1,0 +1,72 @@
+<button mat-fab color="primary" class="floatBtn" (click)="addsubItem()"> Add</button>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="MainItemName">
+      <mat-header-cell *matHeaderCellDef> MainItem Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.MainItemName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="SubItemName">
+      <mat-header-cell *matHeaderCellDef> SubItem Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.SubItemName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="SubItemDescription">
+      <mat-header-cell *matHeaderCellDef> SubItem Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.SubItemDescription}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon class="example-icon" (click)="editsubItem(element)" matTooltip="Edit">mode_edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="subItemForm" (ngSubmit)="subItemSubmit()">
+
+    <mat-form-field>
+      <mat-select placeholder="MainItem" formControlName="MainItemId">
+        <mat-option *ngFor="let comp of mainItemList" [value]="comp.MainItemId">
+          {{ comp.MainItemName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="SubItemName" placeholder="SubItem Name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="SubItemDescription" placeholder="SubItem Description">
+    </mat-form-field>
+
+    <div class="radioData">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="0">InActive</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!subItemForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+  </form>
+</ngu-modal>

@@ -1,0 +1,279 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './_vari';
+@import '../node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.css';
+
+body {
+  margin: 0 auto;
+  display: block;
+  background: #e4ecee;
+  /*font-family: 'Merriweather Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;*/
+  font-family: 'Roboto', sans-serif;
+  font-size: $Defaultfontsize;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+.header {
+  font-weight: 900;
+  font-size: 25px;
+  margin: 10px;
+}
+
+.modalTile {
+  font-weight: bolder;
+  font-size: 28px;
+  margin: 0;
+  padding: 0 0 10px;
+}
+
+.floatBtn {
+  position: fixed !important;
+  bottom: 22px;
+  right: 22px;
+  z-index: 15;
+}
+
+.card {
+  padding: 1em;
+  display: block;
+  background: #fff;
+  margin-bottom: 10px;
+  @include boxShadow(10px);
+  /*box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);*/
+  border-radius: 4px;
+  margin: 10px;
+}
+
+/*
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 0px solid #ccc;
+    border-radius: 0px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    border-bottom: 1px solid #ccc;
+}*/
+
+.btn {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  -webkit-transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: box-shadow;
+  min-width: 88px;
+  background: #673ab7;
+  border: 0;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+  &:disabled {
+    background: rgb(145, 113, 203);
+  }
+}
+
+/*-------------------------forms--------------------------------------*/
+
+.formgroup {
+  position: relative;
+  padding: 10px;
+  .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 0px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 0px solid #ccc;
+    border-radius: 0px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    font-weight: 500;
+    &:focus {
+      outline: none;
+    }
+    &::-webkit-input-placeholder {
+      color: #aaa;
+    }
+    &:focus::-webkit-input-placeholder {
+      color: dodgerblue;
+    }
+    &:focus + .underline {
+      transform: scale(1);
+    }
+  }
+  .invalid {
+    background: red !important;
+    transform: scale(1) !important;
+  }
+  .underline {
+    background-color: dodgerblue;
+    height: 2px;
+    transform: scale(0, 1);
+    transition: all 0.2s linear;
+    width: 100%;
+  }
+  .valimsg {
+    color: red;
+  }
+}
+
+.clearfix {
+  clear: both;
+}
+
+/*-----------------------------------table-------------------------------*/
+
+.ngxtable {
+  padding: 0;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    thead {
+      text-align: left;
+      th {
+        padding: 10px;
+        border-bottom: 1px solid rgba(204, 204, 204, 0.59);
+        vertical-align: middle;
+      }
+    }
+    tbody {
+      tr {
+        &:last-child {
+          border: none;
+        }
+        td {
+          padding: 10px;
+          border-bottom: 1px solid rgba(204, 204, 204, 0.59);
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  &.ngxhovertable {
+    tbody {
+      tr {
+        &:hover {
+          background: #ccc;
+        }
+      }
+    }
+  }
+  &.ngxpointer {
+    tbody {
+      tr {
+        cursor: pointer;
+      }
+    }
+  }
+  &.ngxrestable {
+    overflow: auto;
+  }
+}
+
+@include xsScreen {
+  .sideMenu {
+    width: $navWidth;
+    transform: translate3d(-$navWidth, 0px, 0px);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+}
+
+.navopen {
+  @include xsScreen {
+    .sideMenu {
+      transform: translate3d(0px, 0px, 0px);
+    }
+    .overlayDiv {
+      display: block !important;
+    }
+  }
+}
+
+.navHide .sideMenu {
+  @include xsScreen {
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 768px) {
+  .navopen {
+    .sideMenu {
+      width: $navWidth;
+    }
+    .overlayDiv {
+      display: block !important;
+    }
+  }
+  body .mainDiv {
+    width: calc(100% - #{$navCloseWidth});
+    margin-left: $navCloseWidth;
+    transition: 0.3s ease all;
+  }
+  .navHide .sideMenu {
+    width: $navCloseWidth;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navopen {
+    .sideMenu {
+      width: $navWidth;
+    }
+    .mainDiv {
+      width: calc(100% - #{$navWidth});
+      margin-left: $navWidth;
+      transition: 0.3s ease all;
+    }
+    .overlayDiv {
+      display: none !important;
+    }
+  }
+  .navHide {
+    .sideMenu {
+      width: $navCloseWidth;
+    }
+    .mainDiv {
+      width: calc(100% - #{$navCloseWidth});
+      margin-left: $navCloseWidth;
+      transition: 0.3s ease all;
+    }
+  }
+}
+
+@keyframes openNav {
+  0% {
+    transform: translate3d(-250px, 0px, 0px);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+}
+
+@keyframes closeNav {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+  100% {
+    transform: translate3d(-250px, 0px, 0px);
+  }
+}

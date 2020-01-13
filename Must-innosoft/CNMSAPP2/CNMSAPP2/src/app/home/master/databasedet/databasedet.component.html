@@ -1,0 +1,103 @@
+<button mat-fab color="primary" class="addClient" (click)="addDatabase()">Add</button>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+
+
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="CompanyName">
+      <mat-header-cell *matHeaderCellDef> CompanyName </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CompanyName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ClientName">
+      <mat-header-cell *matHeaderCellDef> ClientName </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ClientName}} </mat-cell>
+    </ng-container>
+
+
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Server_Name">
+      <mat-header-cell *matHeaderCellDef> Server Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Server_Name}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="DB_Name">
+      <mat-header-cell *matHeaderCellDef> DB Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.DB_Name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="DB_Username">
+      <mat-header-cell *matHeaderCellDef> DB Username </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.DB_Username}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="DB_Password">
+      <mat-header-cell *matHeaderCellDef> DB Password </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.DB_Password}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon class="example-icon" (click)="editDatabase(element)" matTooltip="Edit">mode_edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="databaseForm" (ngSubmit)="databaseSubmit()">
+    <mat-form-field>
+      <mat-select placeholder="Company" formControlName="CompanyId">
+        <mat-option *ngFor="let comp of companyList" [value]="comp.CompanyId">
+          {{ comp.CompanyName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Client" formControlName="ClientId">
+        <mat-option *ngFor="let comp of clientList" [value]="comp.ClientId">
+          {{ comp.ClientName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Server_Name" placeholder="Server Name">
+    </mat-form-field>
+
+
+
+    <mat-form-field>
+      <input matInput formControlName="DB_Name" placeholder="DB Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="DB_Username" placeholder="DB Username">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="DB_Password" placeholder="DB Password">
+    </mat-form-field>
+    <div class="radioData">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="0">InActive</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!databaseForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+  </form>
+</ngu-modal>

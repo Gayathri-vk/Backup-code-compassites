@@ -1,0 +1,55 @@
+.course-section{
+    padding-bottom:20px;
+}
+.cousre-button button{
+  border:1px solid #4900ff;
+  color:#4900ff;
+  padding:7px;
+  margin-right:10px;
+  border-radius:20px;
+  background: #fff;
+}
+.card-course{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-bottom:10px;
+}
+.card-course h4{
+   margin:20px 0px;
+}
+.course-minutes{
+    display:block;
+}
+.minute-block{
+    text-align:end;
+    padding:0;
+}
+.glyphicon-time,.glyphicon-play-circle{
+    font-size:16px;
+}
+.course-circle{
+    padding: 8px 7px;
+    
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+    border-radius:50%;
+}
+.panel-default,.panel-default .panel-heading {
+    background:#fff;
+    border-color: #fff;
+}
+.course-module{
+    padding: 8px 7px;
+    
+    
+    background: linear-gradient(to bottom, #33ccff 0%, #ffcc66 100%);
+    border-radius:50%;
+}
+.panel-pad{
+    padding-bottom:20px;
+}
+.course-lesson{
+    border-radius:50%;
+    padding: 8px 8px;
+    margin:0 15px;
+    background: linear-gradient(to bottom, #33ccff 0%, #99ff99 100%);
+}

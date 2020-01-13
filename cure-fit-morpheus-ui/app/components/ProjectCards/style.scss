@@ -1,0 +1,25 @@
+.accordian_block{
+    // border: 1px solid #8dd8ff;
+    // box-shadow: 0px 2px #8dd8ff;
+    .lists{
+        background: #f6f9fe;
+        margin-bottom: 0 !important;
+        margin: 0 0px !important;
+        margin-bottom: 10px !important;
+        span{
+            cursor:pointer;
+        }
+        .fa-angle-down{
+            margin-top: 22px;
+            margin-left: 22px;
+        }
+        .label_project{
+            border-right: 1px solid #9fddfe;
+            margin-top: 9px;
+            line-height: 16px;
+            padding: 0 20px;
+            display: inline-block;
+            margin: 19px 0px;
+        }
+    }
+}

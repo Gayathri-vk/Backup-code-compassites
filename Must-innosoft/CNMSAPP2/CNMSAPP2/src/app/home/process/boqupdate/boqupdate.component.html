@@ -1,0 +1,107 @@
+<div style="position: relative;top:1px">
+  <button mat-raised-button color="primary" (click)="Expanding()">Expand All</button>
+  <button mat-raised-button color="primary" (click)="collapsing()">Collapse All</button>
+  <mat-select placeholder="Calender">
+    <mat-option *ngFor="let Calende of Calenders" [value]="Calende.code" (onSelectionChange)="Calenderchange($event, Calende)">
+      {{ Calende.name }}
+    </mat-option>
+  </mat-select>
+  <!-- <button mat-raised-button color="primary" (click)="setScaleday()">Day scale</button>
+  <button mat-raised-button color="primary" (click)="setScaleweek()">Week scale</button>
+  <button mat-raised-button color="primary" (click)="setScalemonth()">Month scale</button>
+  <button mat-raised-button color="primary" (click)="setScaleyear()">Year scale</button> -->
+  <button mat-raised-button color="primary" (click)="renderer()">Refresh</button>
+  <button mat-raised-button color="accent" (click)="Freeze()">Freeze Project Schedule</button>
+  <button mat-raised-button color="accent" (click)="LinkUpdate()">Link Update</button>
+  <button mat-raised-button color="primary" (click)="Reset()">Reset</button>
+</div>
+
+<div #gantt_here style='width: 100%; height: 94%;'></div>
+<ngu-modal [MIndex]="sampleText">
+  <h4>Gantt Form</h4>
+  <form [formGroup]="ganttForm" (ngSubmit)="save()">
+    <mat-form-field>
+      <mat-select formControlName="location" placeholder="location" [disabled]="true">
+        <mat-option *ngFor="let emp of ProjectDescriptionDet" [value]="emp.Id">
+          {{ emp.Description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="mainitem" placeholder="Main Item" [disabled]="true">
+        <mat-option *ngFor="let emp of MainItemMasterDet" [value]="emp.MainItemId">
+          {{ emp.MainItemName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="countval != 1">
+      <input matInput formControlName="subitem" placeholder="Sub Item" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 2">
+      <input matInput formControlName="subsubitem" placeholder="Sub Sub Item" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="boq" placeholder="BOQ Ref" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 2">
+      <input matInput formControlName="task" placeholder="Task" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 2 || countval == 1">
+      <mat-select matInput formControlName="unit" placeholder="Unit" [disabled]="true">
+        <mat-option value="KG">KG</mat-option>
+        <mat-option value="M">M</mat-option>
+        <mat-option value="M2">M2</mat-option>
+        <mat-option value="M3">M3</mat-option>
+        <mat-option value="No">No</mat-option>
+        <mat-option value="Sum">Sum</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 2 || countval == 1">
+      <input matInput formControlName="qty" placeholder="Qty" [disabled]="true">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 2 || countval == 1">
+      <input matInput formControlName="urate" placeholder="Rate" [disabled]="true">
+    </mat-form-field>
+    <mat-form-field (click)="picker.open()" *ngIf="countval > 2">
+      <input matInput [matDatepicker]="picker" formControlName="start_date" placeholder="Start Date">
+      <!-- <input matInput [matDatepicker]="picker" formControlName="start_date" [disabled]="(setread == 1)" placeholder="Start Date"> -->
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field (click)="picker1.open()" *ngIf="countval > 2">
+      <input matInput [matDatepicker]="picker1" formControlName="end_date" [readonly]="true" placeholder="End Date">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 2">
+      <input matInput formControlName="duration" placeholder="Duration" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval <= 0">
+      <!--   Successors -->
+
+      <input matInput formControlName="Predec" placeholder="Predecessor" [disabled]="true">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 2">
+      <input matInput formControlName="dep" placeholder="Predecessor">
+    </mat-form-field>
+    <mat-form-field *ngIf="countval > 2">
+      <mat-select matInput formControlName="Priority" placeholder="Condition(FS,SS,FF,SF)">
+        <mat-option value="0">Finish To Start</mat-option>
+        <mat-option value="1">Start To Start</mat-option>
+        <mat-option value="2">Finish To Finish</mat-option>
+        <mat-option value="3">Start To Finish</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="!ganttForm.valid">Save</button>
+    <!-- <button type="button" mat-raised-button color="warn" (click)="remove()">Delete</button> -->
+
+    <button type="button" mat-raised-button color="accent" (click)="cancel()">Close</button>
+  </form>
+</ngu-modal>
+
+
+<!-- <div style="position: relative;top:1px">
+
+</div> -->

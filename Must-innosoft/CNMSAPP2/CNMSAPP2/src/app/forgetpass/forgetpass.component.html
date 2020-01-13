@@ -1,0 +1,20 @@
+<div class="center">
+  <div>
+    <mat-card>
+      <h4 class="modalTile">{{modalTitle}}</h4>
+      <div class="externalHeader">
+        <form [formGroup]="forpassForm" (ngSubmit)="forpassSubmit()">
+          <mat-form-field>
+            <input matInput formControlName="ClientCode" placeholder="ClientCode">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="Email" placeholder="Email">
+          </mat-form-field>
+          <button type="submit" mat-raised-button color="primary" [disabled]="!forpassForm.valid">Reset</button>
+          <button type="submit" mat-raised-button color="accent" (click)="logOut()">Login Page</button>
+        </form>
+      </div>
+
+    </mat-card>
+  </div>
+</div>

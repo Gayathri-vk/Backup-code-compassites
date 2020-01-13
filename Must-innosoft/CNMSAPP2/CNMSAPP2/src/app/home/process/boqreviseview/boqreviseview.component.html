@@ -1,0 +1,69 @@
+<div class="selectedProj">
+  <h4>BOQ Revise View</h4>
+  <!-- <button (click)="exportData()" mat-raised-button color="primary">Export</button> -->
+</div>
+<div class="example-container mat-elevation-z8">
+
+
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="ReviseType">
+      <mat-header-cell *matHeaderCellDef> REVISE </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ReviseType}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="RStartDate">
+      <mat-header-cell *matHeaderCellDef> REVISE START DATE </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.RStartDate | date:'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="REndDate">
+      <mat-header-cell *matHeaderCellDef> REVISE END DATE </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.REndDate | date:'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> LOCATION </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mainItem">
+      <mat-header-cell *matHeaderCellDef> MAIN ITEMS </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mainItem}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="subitem">
+      <mat-header-cell *matHeaderCellDef> SUB-ITEMS </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subitem}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="subsubitem">
+      <mat-header-cell *matHeaderCellDef> SUB-SUB-ITEMS </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subsubitem}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="boq">
+      <mat-header-cell *matHeaderCellDef> BOQ REFERENCE </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.boq}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="task">
+      <mat-header-cell *matHeaderCellDef> TASK </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.task}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="start_date">
+      <mat-header-cell *matHeaderCellDef> START DATE </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.start_date | date:'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="end_date">
+      <mat-header-cell *matHeaderCellDef> END DATE </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.end_date | date:'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>

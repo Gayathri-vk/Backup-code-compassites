@@ -1,0 +1,35 @@
+.mydesc {
+  padding: 20px;
+
+  mat-card {
+    width: 100%;
+    width: calc(100% - 4px);
+
+    margin-bottom: 22px;
+    .externalHeader {
+      display: flex;
+      align-items: center;
+      h4,
+      div {
+        flex: 1;
+        margin: 0px;
+      }
+    }
+  }
+  mat-list-item {
+    font-size: 12px;
+  }
+  .mytableSel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    .innerTabl {
+      flex: 1;
+      mat-form-field {
+        transform: translateY(12px);
+        width: 90px !important;
+      }
+    }
+  }
+}

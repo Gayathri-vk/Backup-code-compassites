@@ -1,0 +1,242 @@
+<div class="selectedProj">
+  <mat-form-field>
+    <input matInput placeholder="Date" [readonly]="true" [value]="today">
+  </mat-form-field>
+  <!-- <button (click)="boqprocessShow()" mat-raised-button color="primary">Other</button> -->
+</div>
+<div class="mydesc">
+  <mat-card>
+    <div class="externalHeader">
+      <h4>BOQ Daily Process</h4>
+      <button (click)="boqprocessSubmit()" mat-raised-button color="primary">Save</button>
+    </div>
+    <mat-list>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">MainItem</div>
+          <div class="innerTabl">SubItem</div>
+          <div class="innerTabl">SubSubItem</div>
+          <div class="innerTabl">Completed %</div>
+          <div class="innerTabl">Today WorkDone %</div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of boqtasklist">
+        <div class="mytableSel">
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.MainItem" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.SubItem" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.SubSubItem" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.CompletedPer" [readonly]="true">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field *ngIf="list.CompletedPer != 100">
+              <input matInput [(ngModel)]="list.WorkdonePer">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-card>
+</div>
+<!-- {{boqtasklist | json}} -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-mat-6 offset-mat-3">
+      <mat-card>
+        <h4 class="modalTile">
+          {{modalTitle}}</h4>
+        <mat-card-content> -->
+
+<div class="mydesc">
+  <!-- <ngu-modal [MIndex]="sampleText"> -->
+
+  <!-- <form [formGroup]="boqprocessForm" class="example-form" (ngSubmit)="boqwdSubmit()"> -->
+
+  <mat-card>
+    <div class="externalHeader">
+      <!-- <h4 class="modalTile">
+        {{modalTitle}}</h4> -->
+      <h4> Add BOQ Future Process </h4>
+      <button (click)="addNewBoqList()" mat-raised-button color="primary">Add</button>
+    </div>
+    <form [formGroup]="boqFutureForm">
+      <mat-list formArrayName="items">
+        <mat-list-item>
+          <div class="mytableSel">
+            <div class="innerTabl">Main Item</div>
+            <div class="innerTabl">Sub Item</div>
+            <div class="innerTabl">Sub Sub Item</div>
+            <div class="innerTabl">Completed %</div>
+            <div class="innerTabl">WorkDone %</div>
+            <div class="innerTabl">Action</div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let list of boqItemArray.controls; let i = index;" [formGroupName]="i">
+          <div class="mytableSel">
+            <div class="innerTabl">
+              <mat-form-field>
+
+                <mat-select placeholder="Main Item" formControlName="MainItem" (change)="onChange(i)">
+                  <mat-option *ngFor="let comp of boqmainlist" [value]="comp.MainItemId">
+                    {{ comp.MainItem }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+
+                <mat-select placeholder="Sub Item" formControlName="SubItem" (change)="onChange1(i)">
+                  <mat-option *ngFor="let comp of boqsublist[list.get('MainItem').value]" [value]="comp.SubItemId">
+                    {{ comp.SubItem }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <mat-select placeholder="Sub Sub Item" formControlName="BOQId" (change)="onChange2(i)">
+                  <mat-option *ngFor="let comp of boqsubsublist[list.get('SubItem').value]" [value]="comp.BOQID">
+                    {{ comp.SubSubItem }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput formControlName="CompletedPer" [readonly]="true">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput formControlName="WorkdonePer">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-icon color="warn" (click)="deletemainItem(i)">delete</mat-icon>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <br>
+      <div class="externalHeader">
+        <h4> </h4>
+        <button (click)="saveboqform()" class="saveWork" mat-raised-button color="primary">Save</button>
+      </div>
+    </form>
+  </mat-card>
+
+  <div class="mydesc">
+    <mat-card>
+      <div class="externalHeader">
+        <h4>BOQ Variation Process</h4>
+        <button (click)="boqvarSubmit()" mat-raised-button color="primary">Save</button>
+      </div>
+      <mat-list>
+        <mat-list-item>
+          <div class="mytableSel">
+            <div class="innerTabl">MainItem</div>
+            <div class="innerTabl">SubItem</div>
+            <div class="innerTabl">Task</div>
+            <div class="innerTabl">Completed %</div>
+            <div class="innerTabl">WorkDone %</div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let list of boqvarlist">
+          <div class="mytableSel">
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [(ngModel)]="list.MainItem">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [(ngModel)]="list.SubItem">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [(ngModel)]="list.SubSubItem" [readonly]="true">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput [(ngModel)]="list.CompletedPer">
+              </mat-form-field>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field *ngIf="list.CompletedPer != 100">
+                <input matInput [(ngModel)]="list.WorkdonePer">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-card>
+  </div>
+  <!-- <mat-form-field>
+      <mat-select placeholder="Main Item" formControlName="MainItemId">
+        <mat-option *ngFor="let comp of boqmainlist" [value]="comp.MainItemId">
+          {{ comp.MainItem }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+  <!-- <mat-form-field>
+      <mat-select placeholder="Sub Sub Item" formControlName="BOQId">
+        <mat-option *ngFor="let comp of boqdatalist" [value]="comp.BOQId">
+          {{ comp.SubSubItem }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Date" placeholder="Start Date" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="SubItem" placeholder="Sub Item" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="MainItem" placeholder="Main Item" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Description" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="CompletedPer" placeholder="Completed %" [readonly]="true">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="WorkdonePer" placeholder="Work Done %">
+    </mat-form-field> -->
+
+  <!-- <button type="submit" mat-raised-button color="primary" [disabled]="!boqprocessForm.valid">Save</button> -->
+  <!-- <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button> -->
+
+  <!-- </form> -->
+  <!-- </ngu-modal> -->
+</div>
+<!-- </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div> -->
+<!-- {{boqvarlist | json}} -->

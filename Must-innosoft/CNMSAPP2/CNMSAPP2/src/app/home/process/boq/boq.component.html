@@ -1,0 +1,252 @@
+<div class="mydesc">
+
+  <mat-card>
+    <div class="externalHeader">
+      <h4>BOQ</h4>
+      <button (click)="addboqItems()" mat-raised-button color="primary">Add</button>
+    </div>
+    <mat-list>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">LOCATION</div>
+          <div class="innerTabl">MAIN ITEMS</div>
+          <div class="innerTabl">SUB-ITEMS</div>
+          <div class="innerTabl">SUB-SUB-ITEMS</div>
+          <div class="innerTabl">BOQ REFERENCE</div>
+          <div class="innerTabl">BOQ DESCRIPTION (TASK)</div>
+          <div class="innerTabl">UNIT</div>
+          <div class="innerTabl">QUANTITY</div>
+          <div class="innerTabl">UNIT RATE</div>
+          <div class="innerTabl">TOTAL COST</div>
+          <div class="innerTabl">WORKDONE %</div>
+          <div class="innerTabl">START DATE</div>
+          <div class="innerTabl">END DATE</div>
+          <div class="innerTabl">DEP</div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of boqDescList.BoqItems">
+        <div class="mytableSel">
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.location">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.mainitem">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.subitem">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.subsubitem">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.boqref">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.boqtask">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <!-- <input matInput [(ngModel)]="list.unit"> -->
+              <mat-select placeholder="unit" [(ngModel)]="list.unit">
+                <mat-option [value]="0">KG</mat-option>
+                <mat-option [value]="1">M</mat-option>
+                <mat-option [value]="2">M2</mat-option>
+                <mat-option [value]="3">M3</mat-option>
+                <mat-option [value]="4">No</mat-option>
+                <mat-option [value]="5">Sum</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.qty">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.rate">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.cost">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.workdone">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="list.startdate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker1" [(ngModel)]="list.enddate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.dep">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-icon color="accent" (click)="addboqItems()">add</mat-icon>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-card>
+
+</div>
+
+<diV>
+
+  <form id="requisition-form" [formGroup]="requisitionForm" role="form">
+    <table border="1|0" class="table table-bordered table-striped table-condensed b-t">
+      <!-- style="border: ridge; border-left: 1px solid;" -->
+      <thead>
+        <tr>
+
+          <!-- <th>Item</th>
+          <th>Category</th>
+          <th>Purpose</th>
+          <th>Quantity</th> -->
+          <th>LOCATION</th>
+          <th>MAIN ITEMS</th>
+          <th>SUB-ITEMS</th>
+          <th>SUB-SUB-ITEMS</th>
+          <th>BOQ REFERENCE</th>
+          <th>BOQ DESCRIPTION (TASK)</th>
+          <th>UNIT</th>
+          <th>QUANTITY</th>
+          <th>UNIT RATE</th>
+          <th>TOTAL COST</th>
+          <th>WORKDONE %</th>
+          <th>START DATE</th>
+          <th>END DATE</th>
+          <th>DEP</th>
+          <th>
+            <!-- <a (click)="addRow()" class="btn btn-xs btn-info">
+                <i class="glyphicon glyphicon-plus">add</i> </a>-->
+
+
+            <mat-icon color="accent" (click)="addRow()">add</mat-icon>
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of details;let i=index">
+
+          <td>
+            <input [(ngModel)]="item.location" formControlName="item_name_{{item.controlIndex}}" name="location[{{i}}]" class="form-control input-sm"
+              size="20" placeholder="Location" />
+            <!-- <control-messages [control]="requisitionForm.controls['item_name_'+item.controlIndex]" [label]="'Item'"></control-messages> -->
+          </td>
+          <td>
+            <input [(ngModel)]="item.mainitem" formControlName="item_mainitem_{{item.controlIndex}}" name="mainitem[{{i}}]" class="form-control input-sm"
+              size="20" placeholder="Main Item" />
+            <!--<select [(ngModel)]="item.category" name="category[{{i}}]" formControlName="item_category_{{item.controlIndex}}" class="form-control input-sm"
+              placeholder="Category">
+              <option value="0">Select Option</option>
+              <option *ngFor="let c of categories" value="{{c.id}}">{{c.name}}</option>
+            </select>
+             <control-messages [control]="requisitionForm.controls['item_category_'+item.controlIndex]" [label]="'Category'"></control-messages> -->
+          </td>
+          <td>
+            <input [(ngModel)]="item.subitem" formControlName="item_purpose_{{item.controlIndex}}" name="subitem[{{i}}]" class="form-control input-sm"
+              size="20" placeholder="Sub Item" />
+          </td>
+          <td>
+            <input [(ngModel)]="item.subsubitem" formControlName="item_quantity_{{item.controlIndex}}" name="subsubitem[{{i}}]" class="form-control input-sm"
+              size="20" placeholder="Sub Sub Item" />
+            <!--<input type="number" formControlName="item_quantity_{{item.controlIndex}}" step="0" min="1" name="quantity[{{i}}]" class="form-control input-sm"
+              [(ngModel)]="item.quantity" size="3" placeholder="Quantity" />
+             <control-messages [control]="requisitionForm.controls['item_quantity_'+item.controlIndex]" [label]="'Quantity'"></control-messages> -->
+          </td>
+          <td>
+            <input [(ngModel)]="item.boqref" formControlName="item_boqref_{{item.controlIndex}}" name="boqref[{{i}}]" class="form-control input-sm"
+              size="20" placeholder="Boq Ref" />
+          </td>
+          <td>
+            <input [(ngModel)]="item.boqtask" formControlName="item_boqtask_{{item.controlIndex}}" name="boqtask[{{i}}]" class="form-control input-sm"
+              size="20" placeholder="Boq Task" />
+          </td>
+          <td>
+            <select [(ngModel)]="item.unit" name="unit[{{i}}]" formControlName="item_unit_{{item.controlIndex}}" class="form-control input-sm"
+              placeholder="Unit">
+              <option value="0">Select Option</option>
+              <option *ngFor="let c of categories" value="{{c.id}}">{{c.name}}</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" formControlName="item_quantity_{{item.controlIndex}}" step="0" min="1" name="qty[{{i}}]" class="form-control input-sm"
+              [(ngModel)]="item.qty" size="3" placeholder="Quantity" />
+          </td>
+          <td>
+            <input type="number" formControlName="item_rate_{{item.controlIndex}}" step="0" min="1" name="rate[{{i}}]" class="form-control input-sm"
+              [(ngModel)]="item.rate" size="3" placeholder="Rate" />
+          </td>
+          <td>
+            <input type="number" formControlName="item_cost_{{item.controlIndex}}" step="0" min="1" name="cost[{{i}}]" class="form-control input-sm"
+              [(ngModel)]="item.cost" size="3" placeholder="Cost" />
+          </td>
+          <td>
+            <input type="number" formControlName="item_workdone_{{item.controlIndex}}" step="0" min="1" name="workdone[{{i}}]" class="form-control input-sm"
+              [(ngModel)]="item.workdone" size="3" placeholder="Workdone%" />
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="item.startdate" class="form-control input-sm">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker1" [(ngModel)]="item.enddate" class="form-control input-sm">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+          </td>
+          <td>
+            <input [(ngModel)]="item.dep" formControlName="item_dep_{{item.controlIndex}}" name="dep[{{i}}]" class="form-control input-sm"
+              size="20" placeholder="Dep" />
+          </td>
+          <td>
+            <button (click)="removeRow(i)" mat-raised-button color="primary">+</button>
+            <!-- <a *ngIf="i!=0" (click)="removeRow(i)" class="btn btn-xs btn-danger">
+              <i class="glyphicon glyphicon-remove">X</i>
+            </a>-->
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+
+</diV>

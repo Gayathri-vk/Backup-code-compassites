@@ -1,0 +1,45 @@
+<div class="selectedProj">
+  <h4>BOQ Critical Path Report</h4>
+  <button (click)="exportData()" mat-raised-button color="primary">Export</button>
+</div>
+<div class="example-container mat-elevation-z8">
+
+
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="text">
+      <mat-header-cell *matHeaderCellDef> LOCATION </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.text}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> MAIN ITEMS </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="subitem">
+      <mat-header-cell *matHeaderCellDef> SUB-ITEMS </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subitem}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="subsubitem">
+      <mat-header-cell *matHeaderCellDef> SUB-SUB-ITEMS </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subsubitem}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="duration">
+      <mat-header-cell *matHeaderCellDef> DURATION </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.duration}} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>

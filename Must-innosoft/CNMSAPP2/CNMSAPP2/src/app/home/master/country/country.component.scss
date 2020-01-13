@@ -1,0 +1,33 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  background: white;
+  margin: 15px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.addCountry {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+}
+
+.radioData {
+  padding: 20px 0;
+  display: flex;
+}

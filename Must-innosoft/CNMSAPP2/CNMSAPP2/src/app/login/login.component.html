@@ -1,0 +1,29 @@
+<div class="login">
+  <img [src]="imgSrc" />
+  <h1>Login</h1>
+  <p class="loginerr" *ngIf="loginerr">{{userAlert}}</p>
+  <form novalidate [formGroup]="loginForm" (ngSubmit)="loginIn(loginForm.value)">
+    <mat-form-field>
+      <input matInput formControlName="ClientCode" placeholder="Client Code">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Username" placeholder="User Id">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" formControlName="Password" placeholder="Password">
+    </mat-form-field>
+    <!-- {{loginForm.value | json}} -->
+    <button tabindex="3" type="submit" [ngClass]="{'requesting': procs == 1}" [disabled]="!loginForm.valid" class="btn">login</button>
+
+
+  </form>
+  <br>
+  <button mat-fab (click)="goToPage()">
+    Register
+  </button>
+  <button mat-stroked-button (click)="goToPageFP()">
+    Forget Password
+  </button>
+</div>
+
+<!-- {{loginForm.status | json}} -->

@@ -1,0 +1,340 @@
+<div class="selectedProj">
+  <mat-form-field>
+    <mat-select placeholder="Select Project" [(ngModel)]="projectDescList.ProjectId" (change)="onChange($event, projectDescList.ProjectId)">
+      <mat-option *ngFor="let emp of projectList" [value]="emp.ProjectId">
+        {{ emp.ProjectName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="mydesc">
+  <mat-card>
+    <h4>PROJECT DESCRIPTION</h4>
+    <mat-list>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">Description</div>
+          <div class="innerTabl">Yes/No</div>
+          <div class="innerTabl">Qty</div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">Foundation</div>
+          <div class="innerTabl">
+            <mat-radio-group (change)="!projectDescList.ProjectDescription.Foundation.status && (projectDescList.ProjectDescription.Foundation.qty = 0)"
+              [(ngModel)]="projectDescList.ProjectDescription.Foundation.status">
+              <mat-radio-button [value]="1">Yes</mat-radio-button>
+              <mat-radio-button [value]="0">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [readonly]="!projectDescList.ProjectDescription.Foundation.status" [(ngModel)]="projectDescList.ProjectDescription.Foundation.qty"
+                (change)="onChangefun($event, projectDescList.ProjectDescription.Foundation.qty)" placeholder="Enter no.of Levels/Locations">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of projectDescList.ProjectDescription.Foundation.FoundationDes">
+        <div class="innerTabl" [hidden]="projectDescList.ProjectDescription.Foundation.qty==0">
+          <mat-form-field>
+            <input matInput [(ngModel)]="list.name" placeholder="Enter Foundation Ref/Name">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">Basement</div>
+          <div class="innerTabl">
+            <mat-radio-group (change)="!projectDescList.ProjectDescription.Basement.status && (projectDescList.ProjectDescription.Basement.qty = 0)"
+              [(ngModel)]="projectDescList.ProjectDescription.Basement.status ">
+              <mat-radio-button [value]="1">Yes</mat-radio-button>
+              <mat-radio-button [value]="0">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [readonly]="!projectDescList.ProjectDescription.Basement.status" [(ngModel)]="projectDescList.ProjectDescription.Basement.qty"
+                (change)="onChangeBase($event, projectDescList.ProjectDescription.Basement.qty)" placeholder="Enter no.of Floors">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of projectDescList.ProjectDescription.Basement.FoundationDes">
+        <div class="innerTabl" [hidden]="projectDescList.ProjectDescription.Basement.qty==0">
+          <mat-form-field>
+            <input matInput [(ngModel)]="list.name" placeholder="Enter Basement Ref/Name">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">Podium</div>
+          <div class="innerTabl">
+            <mat-radio-group (change)="!projectDescList.ProjectDescription.Podium.status && (projectDescList.ProjectDescription.Podium.qty = 0)"
+              [(ngModel)]="projectDescList.ProjectDescription.Podium.status">
+              <mat-radio-button [value]="1">Yes</mat-radio-button>
+              <mat-radio-button [value]="0">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [readonly]="!projectDescList.ProjectDescription.Podium.status" [(ngModel)]="projectDescList.ProjectDescription.Podium.qty"
+                (change)="onChangeqty($event, projectDescList.ProjectDescription.Podium.qty)" placeholder="Enter no.of Floors">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of projectDescList.ProjectDescription.Podium.FoundationDes">
+        <div class="innerTabl" [hidden]="projectDescList.ProjectDescription.Podium.qty==0">
+          <mat-form-field>
+            <input matInput [(ngModel)]="list.name" placeholder="Enter Podium Ref/Name">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">Mezanine</div>
+          <div class="innerTabl">
+            <mat-radio-group (change)="!projectDescList.ProjectDescription.Mezanine.status && (projectDescList.ProjectDescription.Mezanine.qty = 0)"
+              [(ngModel)]="projectDescList.ProjectDescription.Mezanine.status">
+              <mat-radio-button [value]="1">Yes</mat-radio-button>
+              <mat-radio-button [value]="0">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [readonly]="!projectDescList.ProjectDescription.Mezanine.status" [(ngModel)]="projectDescList.ProjectDescription.Mezanine.qty"
+                (change)="onChangeMaz($event, projectDescList.ProjectDescription.Mezanine.qty)" placeholder="Enter no.of Floors">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of projectDescList.ProjectDescription.Mezanine.FoundationDes">
+        <div class="innerTabl" [hidden]="projectDescList.ProjectDescription.Mezanine.qty==0">
+          <mat-form-field>
+            <input matInput [(ngModel)]="list.name" placeholder="Enter Mezanine Ref/Name">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+
+  <mat-card *ngFor="let name of projectDescList.nameList; let i = index; let first = first;">
+    <div class="externalHeader projType">
+      <div>
+        <mat-form-field>
+          <input matInput [(ngModel)]="name.name">
+        </mat-form-field>
+      </div>
+      <button (click)="addNewBlock()" *ngIf="first" mat-raised-button color="primary">Add New Block</button>
+      <button (click)="addList(i)" mat-raised-button color="primary">Add</button>
+    </div>
+    <mat-card *ngFor="let list of name.list">
+      <mat-list>
+        <mat-list-item>
+          <div style="flex: 1">{{name.name}}-
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.name">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-icon color="warn" (click)="deleteList(i, list)">delete</mat-icon>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="mytableSel">
+            <div class="innerTabl">Description</div>
+            <div class="innerTabl">Yes/No</div>
+            <div class="innerTabl">Qty</div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="mytableSel">
+            <div class="innerTabl">Floors</div>
+            <div class="innerTabl">
+              <mat-radio-group (change)="list.Floor.status && (list.Floor.qty = 0)" [(ngModel)]="list.Floor.status">
+                <mat-radio-button [value]="1">Yes</mat-radio-button>
+                <mat-radio-button [value]="0">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput (change)="onChangeFlo($event, list.Floor.qty)" [readonly]="!list.Floor.status"
+                  [(ngModel)]="list.Floor.qty" placeholder="Enter no.of Floors">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let list1 of list.Floor.FoundationDes">
+          <div class="innerTabl" [hidden]="list.Floor.qty==0">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list1.name" placeholder="Enter Floor Ref/Name">
+            </mat-form-field>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="mytableSel">
+            <div class="innerTabl">LOWER ROOF</div>
+            <div class="innerTabl">
+              <mat-radio-group (change)="list.LowerRoof.status && (list.LowerRoof.qty = 0)" [(ngModel)]="list.LowerRoof.status">
+                <mat-radio-button [value]="1">Yes</mat-radio-button>
+                <mat-radio-button [value]="0">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput (change)="onChangeLFlo($event, list.LowerRoof.qty)" [readonly]="!list.LowerRoof.status"
+                  [(ngModel)]="list.LowerRoof.qty" placeholder="Enter no.of Floors">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let list1 of list.LowerRoof.FoundationDes">
+          <div class="innerTabl" [hidden]="list.LowerRoof.qty==0">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list1.name" placeholder="Enter LowerRoof Ref/Name">
+            </mat-form-field>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="mytableSel">
+            <div class="innerTabl">UPPER ROOF</div>
+            <div class="innerTabl">
+              <mat-radio-group (change)="!list.UpperRoof.status && (list.UpperRoof.qty = 0)" [(ngModel)]="list.UpperRoof.status">
+                <mat-radio-button [value]="1">Yes</mat-radio-button>
+                <mat-radio-button [value]="0">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="innerTabl">
+              <mat-form-field>
+                <input matInput (change)="onChangeUFlo($event, list.UpperRoof.qty)" [readonly]="!list.UpperRoof.status"
+                  [(ngModel)]="list.UpperRoof.qty" placeholder="Enter no.of Floors">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let list1 of list.UpperRoof.FoundationDes">
+          <div class="innerTabl" [hidden]="list.UpperRoof.qty==0">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list1.name" placeholder="Enter UpperRoof Ref/Name">
+            </mat-form-field>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </mat-card>
+
+  <mat-card>
+    <div class="externalHeader">
+      <h4>EXTERNAL WORKS</h4>
+      <button (click)="addExternal()" mat-raised-button color="primary">Add</button>
+    </div>
+    <mat-list>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">Name</div>
+          <div class="innerTabl">Units</div>
+          <div class="innerTabl">Items/Qty</div>
+          <div class="innerTabl">Action</div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of projectDescList.ExternalWorks">
+        <div class="mytableSel">
+          <div class="innerTabl">
+
+            <mat-form-field>
+
+              <!-- <mat-select [(ngModel)]="list.externalId">
+                <mat-option *ngFor="let emp of externalmasterList" [value]="emp.ExId">
+                  {{ emp.ExternalWork }}
+                </mat-option>
+              </mat-select> -->
+              <input placeholder="ExternalWorks" matInput [(ngModel)]="list.externalName" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let emp of externalmasterList" [value]="emp.ExternalWork">
+                  {{emp.ExternalWork}}
+                </mat-option>
+              </mat-autocomplete>
+
+            </mat-form-field>
+
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <mat-select [(ngModel)]="list.uom">
+                <mat-option *ngFor="let uom of externalUOM" [value]="uom.value">
+                  {{ uom.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.qty">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-icon color="warn" (click)="deleteItem(list)">delete</mat-icon>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-card>
+
+  <mat-card>
+    <div class="externalHeader">
+      <h4>Project Summary (Main Items)</h4>
+      <button (click)="addMainItems()" mat-raised-button color="primary">Add</button>
+    </div>
+    <mat-list>
+      <mat-list-item>
+        <div class="mytableSel">
+          <div class="innerTabl">Summary (Main Item)</div>
+          <div class="innerTabl">Cost</div>
+          <div class="innerTabl">Action</div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let list of projectDescList.MainItems">
+        <div class="mytableSel">
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.mainitem">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-form-field>
+              <input matInput [(ngModel)]="list.cost">
+            </mat-form-field>
+          </div>
+          <div class="innerTabl">
+            <mat-icon color="warn" (click)="deletemainItem(list)">delete</mat-icon>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-card>
+</div>
+
+
+<button (click)="submit()" class="saveWork" mat-raised-button color="primary">Save</button>
+<!-- {{projectDescList | json}} -->

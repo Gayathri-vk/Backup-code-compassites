@@ -1,0 +1,152 @@
+@import './../../_vari';
+.sideMenu {
+  @include xsScreen {
+    padding-top: $navToolbarWidth;
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /*box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
+    background-color: rgb(212, 224, 231);*/
+  z-index: 19;
+  background: #673ab7;
+  color: rgba(255, 255, 255, 0.52);
+  span i {
+    font-size: 16px;
+  }
+}
+
+.sideMenu {
+  @include smScreen {
+    transition: width 0.3s ease-in-out;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sideMenu {
+    /*box-shadow: inset -6px 0 6px rgba(0, 0, 0, .1);*/
+    box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+nav {
+  width: $navWidth;
+  position: relative;
+  .navFor {
+    overflow: hidden;
+    &:first-child {
+      padding: 10px 8px 24px;
+      @include xsScreen {
+        display: none;
+      }
+    }
+    &.active {
+      div {
+        color: #fff;
+      }
+      ul {
+        display: block;
+      }
+    }
+    span {
+      width: 20px;
+      padding: 0px 10px;
+      display: inline-block;
+      text-align: center;
+    }
+    div {
+      width: calc(100% - #{$navWidth - $navCloseWidth});
+      text-align: center;
+      display: inline-block;
+      vertical-align: top;
+      padding: 8px 0px;
+      box-sizing: border-box;
+      cursor: pointer;
+      i {
+        font-size: 20px;
+      }
+      p {
+        margin: 2px 0 0;
+        font-size: 11px;
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      width: calc(100% - #{$navCloseWidth});
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: none;
+      background: white;
+      min-height: 100vh;
+      box-sizing: border-box;
+      @include xsScreen {
+        min-height: calc(100vh - #{$navToolbarWidth});
+      }
+      overflow-y: auto;
+      li {
+        a {
+          text-decoration: none;
+          color: rgb(77, 46, 132);
+          display: block;
+          padding: 10px 0;
+          &:hover {
+            background-color: rgb(77, 46, 132);
+            color: white;
+          }
+          &.active {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}
+
+.mainNav {
+  @include smScreen {
+    display: none;
+  }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $mainColor;
+  color: white;
+  padding: 15px 0;
+  z-index: 20;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  height: $navToolbarWidth;
+  box-sizing: border-box;
+  span {
+    padding: 14px;
+    cursor: pointer;
+    i {
+      /*padding-right: 12px;*/
+      font-size: 18px;
+    }
+  }
+}
+
+.overlayDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 15;
+  display: none;
+  opacity: 0.48;
+}
+
+mat-list-item:hover,
+.active {
+  background: #3f51b5;
+  color: white;
+}

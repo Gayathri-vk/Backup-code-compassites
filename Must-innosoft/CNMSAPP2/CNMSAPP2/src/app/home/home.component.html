@@ -1,0 +1,20 @@
+<div class="mat-elevation-z6">
+  <mat-toolbar color="primary">
+    <mat-icon mat-button class="example-icon" (click)="drawer.toggle()">view_headline</mat-icon>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" (click)="logout()">lock</mat-icon>
+  </mat-toolbar>
+</div>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer color="primary" #drawer class="example-sidenav  mat-elevation-z5" mode="side">
+    <app-navigation></app-navigation>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <main [@routerTransition]="getState(o)">
+      <router-outlet #o="outlet"></router-outlet>
+    </main>
+  </div>
+  <div class="expireMsg" *ngIf="expMsg">{{expMsg}}</div>
+</mat-drawer-container>

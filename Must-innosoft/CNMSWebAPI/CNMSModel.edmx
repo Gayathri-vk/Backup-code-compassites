@@ -1,0 +1,2211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ConstructionDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BlockDetails">
+          <Key>
+            <PropertyRef Name="BlockId" />
+          </Key>
+          <Property Name="BlockId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="BlockName" Type="nvarchar" MaxLength="150" />
+          <Property Name="LoweRoof" Type="int" />
+          <Property Name="UpperRoof" Type="int" />
+          <Property Name="BlockQty" Type="int" />
+        </EntityType>
+        <EntityType Name="BoqDailyProcess">
+          <Key>
+            <PropertyRef Name="DId" />
+          </Key>
+          <Property Name="DId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkdonePer" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BOQId" Type="bigint" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="WorkdoneType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BoqEntryDetails">
+          <Key>
+            <PropertyRef Name="BOQId" />
+          </Key>
+          <Property Name="BOQId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" />
+          <Property Name="DescriptionId" Type="bigint" />
+          <Property Name="DescriptionName" Type="nvarchar" MaxLength="250" />
+          <Property Name="MainItemId" Type="bigint" />
+          <Property Name="MainItem" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubItem" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubSubItem" Type="nvarchar" MaxLength="250" />
+          <Property Name="BoqRef" Type="nvarchar" MaxLength="100" />
+          <Property Name="Task" Type="nvarchar" MaxLength="250" />
+          <Property Name="Unit" Type="varchar" MaxLength="10" />
+          <Property Name="Qty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UnitRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalCost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="WorkdonePer" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Duration" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Priority" Type="bigint" />
+          <Property Name="RefId" Type="varchar" MaxLength="100" />
+          <Property Name="TaskId" Type="varchar" MaxLength="100" />
+          <Property Name="ParentId" Type="varchar" MaxLength="100" />
+          <Property Name="ClientId" Type="bigint" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Workdonedate" Type="datetime" />
+          <Property Name="BOQType" Type="varchar" MaxLength="10" />
+          <Property Name="BOQRefId" Type="varchar" MaxLength="20" />
+          <Property Name="Workdonecost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Flag" Type="varchar" MaxLength="2" />
+          <Property Name="dep" Type="varchar" MaxLength="20" />
+          <Property Name="Predec" Type="varchar" MaxLength="20" />
+          <Property Name="Criticaltaskid" Type="varchar" MaxLength="100" />
+          <Property Name="RVStartDate" Type="datetime" />
+          <Property Name="RVEndDate" Type="datetime" />
+          <Property Name="RDuration" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="BOQLinkDetails">
+          <Key>
+            <PropertyRef Name="BoqLinkId" />
+          </Key>
+          <Property Name="BoqLinkId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOQId" Type="bigint" />
+          <Property Name="ProjectId" Type="bigint" />
+          <Property Name="TaskId" Type="varchar" MaxLength="100" />
+          <Property Name="SourceId" Type="varchar" MaxLength="100" />
+          <Property Name="TargetId" Type="varchar" MaxLength="100" />
+          <Property Name="LinkType" Type="int" />
+          <Property Name="Mcolor" Type="varchar" MaxLength="50" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="BoqReviseDetails">
+          <Key>
+            <PropertyRef Name="ReviseId" />
+          </Key>
+          <Property Name="ReviseId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOQId" Type="bigint" Nullable="false" />
+          <Property Name="ReviseType" Type="nvarchar" MaxLength="50" />
+          <Property Name="RStartDate" Type="datetime" />
+          <Property Name="REndDate" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="Flag" Type="varchar" MaxLength="2" />
+          <Property Name="FDate" Type="datetime" />
+          <Property Name="ProjectId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="ClientCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="200" />
+          <Property Name="TaxNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GSTNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="100" />
+          <Property Name="HandPhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+          <Property Name="UintNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="250" />
+          <Property Name="Street" Type="nvarchar" MaxLength="250" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateCode" Type="int" />
+          <Property Name="Pincode" Type="bigint" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="NoofUser" Type="int" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="ExprieDate" Type="datetime" />
+          <Property Name="Modfied_Date" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientMaster">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+          <Property Name="ClientCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="200" />
+          <Property Name="TaxNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GSTNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="100" />
+          <Property Name="HandPhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+          <Property Name="UintNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="250" />
+          <Property Name="Street" Type="nvarchar" MaxLength="250" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateCode" Type="int" />
+          <Property Name="Pincode" Type="bigint" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientReg">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="200" />
+          <Property Name="TaxNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GSTNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="100" />
+          <Property Name="HandPhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+          <Property Name="UintNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="250" />
+          <Property Name="Street" Type="nvarchar" MaxLength="250" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateCode" Type="int" />
+          <Property Name="Pincode" Type="bigint" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="NoofUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="Modfied_Date" Type="datetime" />
+          <Property Name="License" Type="int" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UintNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="250" />
+          <Property Name="Street" Type="nvarchar" MaxLength="250" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateCode" Type="int" />
+          <Property Name="Pincode" Type="bigint" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GSTNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AuthorisedPerson" Type="nvarchar" MaxLength="100" />
+          <Property Name="HandPhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="Country_TimeZone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="CriticalPathDetails">
+          <Key>
+            <PropertyRef Name="CriticalId" />
+          </Key>
+          <Property Name="CriticalId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" />
+          <Property Name="BOQId" Type="bigint" />
+          <Property Name="TaskId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BOQRefId" Type="varchar" MaxLength="20" />
+          <Property Name="dep" Type="varchar" MaxLength="20" />
+          <Property Name="Duration" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ES" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EF" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Predec" Type="varchar" MaxLength="20" />
+          <Property Name="LS" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LF" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Slack" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Criticaltaskid" Type="varchar" MaxLength="100" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DatabaseDetails">
+          <Key>
+            <PropertyRef Name="DatabaseId" />
+          </Key>
+          <Property Name="DatabaseId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+          <Property Name="Server_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="DB_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="DB_Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="DB_Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="ExternalWorkDetails">
+          <Key>
+            <PropertyRef Name="ExDetId" />
+          </Key>
+          <Property Name="ExDetId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="ExternalWork" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Units" Type="varchar" MaxLength="20" />
+          <Property Name="Qty" Type="int" />
+        </EntityType>
+        <EntityType Name="ExternalWorkMaster">
+          <Key>
+            <PropertyRef Name="ExId" />
+          </Key>
+          <Property Name="ExId" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ExternalWork" Type="nvarchar" MaxLength="150" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="FoundationDetails">
+          <Key>
+            <PropertyRef Name="FoundationId" />
+          </Key>
+          <Property Name="FoundationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="FoundationName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="HolidayMaster">
+          <Key>
+            <PropertyRef Name="HId" />
+          </Key>
+          <Property Name="HId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+          <Property Name="HolidayName" Type="nvarchar" MaxLength="250" />
+          <Property Name="HolidayDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LocationMaster">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="MainItemMaster">
+          <Key>
+            <PropertyRef Name="MainItemId" />
+          </Key>
+          <Property Name="MainItemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="MainItemName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="MenuDetails">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Name="MID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Formname" Type="nvarchar" MaxLength="200" />
+          <Property Name="RouteName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="ProjectDescription">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="Foundation" Type="int" />
+          <Property Name="Basement" Type="int" />
+          <Property Name="Podium" Type="int" />
+          <Property Name="Mezanine" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="ProjectDescriptionDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefId" Type="bigint" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" />
+          <Property Name="Type" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ProjectMaster">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProjectLocation" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProjectIncharge" Type="nvarchar" MaxLength="250" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="250" />
+          <Property Name="Start_Date" Type="datetime" />
+          <Property Name="End_Date" Type="datetime" />
+          <Property Name="ProjectDuration" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="SubItemMaster">
+          <Key>
+            <PropertyRef Name="SubItemId" />
+          </Key>
+          <Property Name="SubItemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MainItemId" Type="bigint" Nullable="false" />
+          <Property Name="SubItemName" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubItemDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="SubSubItemMaster">
+          <Key>
+            <PropertyRef Name="SubSubItemId" />
+          </Key>
+          <Property Name="SubSubItemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubItemId" Type="bigint" Nullable="false" />
+          <Property Name="SubSubItemName" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubSubItemDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="SupplierMaster">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="200" />
+          <Property Name="SupplierAddress" Type="nvarchar(max)" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modfied_Date" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" />
+          <Property Name="ClientCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Role_Id" Type="int" Nullable="false" />
+          <Property Name="MaintanceDate" Type="datetime" />
+          <Property Name="ExprieDate" Type="datetime" />
+          <Property Name="Created_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Modified_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="Modfied_Date" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Loginuser" Type="nvarchar" MaxLength="100" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="100" />
+          <Property Name="Type" Type="int" />
+          <Property Name="SupplierId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="UserPassReset">
+          <Key>
+            <PropertyRef Name="UserRestId" />
+          </Key>
+          <Property Name="UserRestId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Up_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="User_RoleId" />
+          </Key>
+          <Property Name="User_RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="UserRoleMenu">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" />
+          <Property Name="User_RoleId" Type="int" Nullable="false" />
+          <Property Name="MID" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="UserValidity">
+          <Key>
+            <PropertyRef Name="ValidityId" />
+          </Key>
+          <Property Name="ValidityId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+          <Property Name="MaintanceDate" Type="datetime" />
+          <Property Name="ExprieDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VariationMaster">
+          <Key>
+            <PropertyRef Name="VID" />
+          </Key>
+          <Property Name="VID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" />
+          <Property Name="ClientId" Type="bigint" />
+          <Property Name="VariationName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <Association Name="FK_BlockDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="BlockDetails" Type="Self.BlockDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="BlockDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatabaseDetails_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="DatabaseDetails" Type="Self.DatabaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="DatabaseDetails">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatabaseDetails_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="DatabaseDetails" Type="Self.DatabaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="DatabaseDetails">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExternalWorkDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="ExternalWorkDetails" Type="Self.ExternalWorkDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ExternalWorkDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoundationDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="FoundationDetails" Type="Self.FoundationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="FoundationDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HolidayMaster_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="HolidayMaster" Type="Self.HolidayMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="HolidayMaster">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainItemMaster_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="MainItemMaster" Type="Self.MainItemMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="MainItemMaster">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectDescription_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="ProjectDescription" Type="Self.ProjectDescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectDescription">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectMaster_ClientMaster">
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="1" />
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ProjectMaster">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubSubItemMaster_SubItemMaster">
+          <End Role="SubItemMaster" Type="Self.SubItemMaster" Multiplicity="1" />
+          <End Role="SubSubItemMaster" Type="Self.SubSubItemMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubItemMaster">
+              <PropertyRef Name="SubItemId" />
+            </Principal>
+            <Dependent Role="SubSubItemMaster">
+              <PropertyRef Name="SubItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubSubItemMaster_SubSubItemMaster">
+          <End Role="SubSubItemMaster" Type="Self.SubSubItemMaster" Multiplicity="1" />
+          <End Role="SubSubItemMaster1" Type="Self.SubSubItemMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SubSubItemMaster">
+              <PropertyRef Name="SubSubItemId" />
+            </Principal>
+            <Dependent Role="SubSubItemMaster1">
+              <PropertyRef Name="SubSubItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierMaster_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="SupplierMaster" Type="Self.SupplierMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="SupplierMaster">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="User_RoleId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="User_Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMenu_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="UserRoleMenu" Type="Self.UserRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="UserRoleMenu">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMenu_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="UserRoleMenu" Type="Self.UserRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="UserRoleMenu">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMenu_MenuDetails">
+          <End Role="MenuDetails" Type="Self.MenuDetails" Multiplicity="1" />
+          <End Role="UserRoleMenu" Type="Self.UserRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuDetails">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="UserRoleMenu">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMenu_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="UserRoleMenu" Type="Self.UserRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="User_RoleId" />
+            </Principal>
+            <Dependent Role="UserRoleMenu">
+              <PropertyRef Name="User_RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConstructionDBModelStoreContainer">
+          <EntitySet Name="BlockDetails" EntityType="Self.BlockDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BoqDailyProcess" EntityType="Self.BoqDailyProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BoqEntryDetails" EntityType="Self.BoqEntryDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BOQLinkDetails" EntityType="Self.BOQLinkDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BoqReviseDetails" EntityType="Self.BoqReviseDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientMaster" EntityType="Self.ClientMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientReg" EntityType="Self.ClientReg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CriticalPathDetails" EntityType="Self.CriticalPathDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseDetails" EntityType="Self.DatabaseDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalWorkDetails" EntityType="Self.ExternalWorkDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalWorkMaster" EntityType="Self.ExternalWorkMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoundationDetails" EntityType="Self.FoundationDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HolidayMaster" EntityType="Self.HolidayMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationMaster" EntityType="Self.LocationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainItemMaster" EntityType="Self.MainItemMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuDetails" EntityType="Self.MenuDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectDescription" EntityType="Self.ProjectDescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectDescriptionDetails" EntityType="Self.ProjectDescriptionDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectMaster" EntityType="Self.ProjectMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubItemMaster" EntityType="Self.SubItemMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubSubItemMaster" EntityType="Self.SubSubItemMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierMaster" EntityType="Self.SupplierMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPassReset" EntityType="Self.UserPassReset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleMenu" EntityType="Self.UserRoleMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserValidity" EntityType="Self.UserValidity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariationMaster" EntityType="Self.VariationMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BlockDetails_ProjectMaster" Association="Self.FK_BlockDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="BlockDetails" EntitySet="BlockDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Company" Association="Self.FK_Client_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Country" Association="Self.FK_Client_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatabaseDetails_Client" Association="Self.FK_DatabaseDetails_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="DatabaseDetails" EntitySet="DatabaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatabaseDetails_Company" Association="Self.FK_DatabaseDetails_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="DatabaseDetails" EntitySet="DatabaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExternalWorkDetails_ProjectMaster" Association="Self.FK_ExternalWorkDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="ExternalWorkDetails" EntitySet="ExternalWorkDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoundationDetails_ProjectMaster" Association="Self.FK_FoundationDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="FoundationDetails" EntitySet="FoundationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HolidayMaster_Client" Association="Self.FK_HolidayMaster_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="HolidayMaster" EntitySet="HolidayMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainItemMaster_ProjectMaster" Association="Self.FK_MainItemMaster_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="MainItemMaster" EntitySet="MainItemMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectDescription_ProjectMaster" Association="Self.FK_ProjectDescription_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="ProjectDescription" EntitySet="ProjectDescription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMaster_ClientMaster" Association="Self.FK_ProjectMaster_ClientMaster">
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubSubItemMaster_SubItemMaster" Association="Self.FK_SubSubItemMaster_SubItemMaster">
+            <End Role="SubItemMaster" EntitySet="SubItemMaster" />
+            <End Role="SubSubItemMaster" EntitySet="SubSubItemMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubSubItemMaster_SubSubItemMaster" Association="Self.FK_SubSubItemMaster_SubSubItemMaster">
+            <End Role="SubSubItemMaster" EntitySet="SubSubItemMaster" />
+            <End Role="SubSubItemMaster1" EntitySet="SubSubItemMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierMaster_Client" Association="Self.FK_SupplierMaster_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="SupplierMaster" EntitySet="SupplierMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Client" Association="Self.FK_User_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Company" Association="Self.FK_User_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserRole" Association="Self.FK_User_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMenu_Client" Association="Self.FK_UserRoleMenu_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="UserRoleMenu" EntitySet="UserRoleMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMenu_Company" Association="Self.FK_UserRoleMenu_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="UserRoleMenu" EntitySet="UserRoleMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMenu_MenuDetails" Association="Self.FK_UserRoleMenu_MenuDetails">
+            <End Role="MenuDetails" EntitySet="MenuDetails" />
+            <End Role="UserRoleMenu" EntitySet="UserRoleMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMenu_UserRole" Association="Self.FK_UserRoleMenu_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="UserRoleMenu" EntitySet="UserRoleMenu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConstructionDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ConstructionDBEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="CreateCopyDatabaseprocedures">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateCopyDatabaseTable">
+          <Parameter Name="toDatabase" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateCopyDatabaseuser">
+          <Parameter Name="toDatabase" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateCopyDatabaseView">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="BlockDetails" EntityType="ConstructionDBModel.BlockDetail" />
+          <EntitySet Name="BoqDailyProcesses" EntityType="ConstructionDBModel.BoqDailyProcess" />
+          <EntitySet Name="BoqEntryDetails" EntityType="ConstructionDBModel.BoqEntryDetail" />
+          <EntitySet Name="BoqReviseDetails" EntityType="ConstructionDBModel.BoqReviseDetail" />
+          <EntitySet Name="Clients" EntityType="ConstructionDBModel.Client" />
+          <EntitySet Name="ClientMasters" EntityType="ConstructionDBModel.ClientMaster" />
+          <EntitySet Name="ClientRegs" EntityType="ConstructionDBModel.ClientReg" />
+          <EntitySet Name="Companies" EntityType="ConstructionDBModel.Company" />
+          <EntitySet Name="Countries" EntityType="ConstructionDBModel.Country" />
+          <EntitySet Name="DatabaseDetails" EntityType="ConstructionDBModel.DatabaseDetail" />
+          <EntitySet Name="FoundationDetails" EntityType="ConstructionDBModel.FoundationDetail" />
+          <EntitySet Name="LocationMasters" EntityType="ConstructionDBModel.LocationMaster" />
+          <EntitySet Name="MainItemMasters" EntityType="ConstructionDBModel.MainItemMaster" />
+          <EntitySet Name="MenuDetails" EntityType="ConstructionDBModel.MenuDetail" />
+          <EntitySet Name="ProjectDescriptions" EntityType="ConstructionDBModel.ProjectDescription" />
+          <EntitySet Name="ProjectDescriptionDetails" EntityType="ConstructionDBModel.ProjectDescriptionDetail" />
+          <EntitySet Name="ProjectMasters" EntityType="ConstructionDBModel.ProjectMaster" />
+          <EntitySet Name="SubItemMasters" EntityType="ConstructionDBModel.SubItemMaster" />
+          <EntitySet Name="SubSubItemMasters" EntityType="ConstructionDBModel.SubSubItemMaster" />
+          <EntitySet Name="UserRoles" EntityType="ConstructionDBModel.UserRole" />
+          <EntitySet Name="UserRoleMenus" EntityType="ConstructionDBModel.UserRoleMenu" />
+          <EntitySet Name="UserValidities" EntityType="ConstructionDBModel.UserValidity" />
+          <EntitySet Name="VariationMasters" EntityType="ConstructionDBModel.VariationMaster" />
+          <AssociationSet Name="FK_BlockDetails_ProjectMaster" Association="ConstructionDBModel.FK_BlockDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="BlockDetail" EntitySet="BlockDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Company" Association="ConstructionDBModel.FK_Client_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Country" Association="ConstructionDBModel.FK_Client_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatabaseDetails_Client" Association="ConstructionDBModel.FK_DatabaseDetails_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="DatabaseDetail" EntitySet="DatabaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMenu_Client" Association="ConstructionDBModel.FK_UserRoleMenu_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="UserRoleMenu" EntitySet="UserRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMaster_ClientMaster" Association="ConstructionDBModel.FK_ProjectMaster_ClientMaster">
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatabaseDetails_Company" Association="ConstructionDBModel.FK_DatabaseDetails_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="DatabaseDetail" EntitySet="DatabaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMenu_Company" Association="ConstructionDBModel.FK_UserRoleMenu_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="UserRoleMenu" EntitySet="UserRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoundationDetails_ProjectMaster" Association="ConstructionDBModel.FK_FoundationDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="FoundationDetail" EntitySet="FoundationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainItemMaster_ProjectMaster" Association="ConstructionDBModel.FK_MainItemMaster_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="MainItemMaster" EntitySet="MainItemMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMenu_MenuDetails" Association="ConstructionDBModel.FK_UserRoleMenu_MenuDetails">
+            <End Role="MenuDetail" EntitySet="MenuDetails" />
+            <End Role="UserRoleMenu" EntitySet="UserRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectDescription_ProjectMaster" Association="ConstructionDBModel.FK_ProjectDescription_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="ProjectDescription" EntitySet="ProjectDescriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubSubItemMaster_SubItemMaster" Association="ConstructionDBModel.FK_SubSubItemMaster_SubItemMaster">
+            <End Role="SubItemMaster" EntitySet="SubItemMasters" />
+            <End Role="SubSubItemMaster" EntitySet="SubSubItemMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubSubItemMaster_SubSubItemMaster" Association="ConstructionDBModel.FK_SubSubItemMaster_SubSubItemMaster">
+            <End Role="SubSubItemMaster" EntitySet="SubSubItemMasters" />
+            <End Role="SubSubItemMaster1" EntitySet="SubSubItemMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMenu_UserRole" Association="ConstructionDBModel.FK_UserRoleMenu_UserRole">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="UserRoleMenu" EntitySet="UserRoleMenus" />
+          </AssociationSet>
+          <EntitySet Name="SupplierMasters" EntityType="ConstructionDBModel.SupplierMaster" />
+          <AssociationSet Name="FK_SupplierMaster_Client" Association="ConstructionDBModel.FK_SupplierMaster_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="SupplierMaster" EntitySet="SupplierMasters" />
+          </AssociationSet>
+          <EntitySet Name="UserPassResets" EntityType="ConstructionDBModel.UserPassReset" />
+          <EntitySet Name="UserDetails" EntityType="ConstructionDBModel.UserDetail" />
+          <AssociationSet Name="FK_User_Client" Association="ConstructionDBModel.FK_User_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="UserDetail" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Company" Association="ConstructionDBModel.FK_User_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="UserDetail" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserRole" Association="ConstructionDBModel.FK_User_UserRole">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="UserDetail" EntitySet="UserDetails" />
+          </AssociationSet>
+          <EntitySet Name="BOQLinkDetails" EntityType="ConstructionDBModel.BOQLinkDetail" />
+          <EntitySet Name="CriticalPathDetails" EntityType="ConstructionDBModel.CriticalPathDetail" />
+          <EntitySet Name="HolidayMasters" EntityType="ConstructionDBModel.HolidayMaster" />
+          <AssociationSet Name="FK_HolidayMaster_Client" Association="ConstructionDBModel.FK_HolidayMaster_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="HolidayMaster" EntitySet="HolidayMasters" />
+          </AssociationSet>
+          <EntitySet Name="ExternalWorkDetails" EntityType="ConstructionDBModel.ExternalWorkDetail" />
+          <EntitySet Name="ExternalWorkMasters" EntityType="ConstructionDBModel.ExternalWorkMaster" />
+          <AssociationSet Name="FK_ExternalWorkDetails_ProjectMaster" Association="ConstructionDBModel.FK_ExternalWorkDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="ExternalWorkDetail" EntitySet="ExternalWorkDetails" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="BlockDetail">
+          <Key>
+            <PropertyRef Name="BlockId" />
+          </Key>
+          <Property Name="BlockId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <Property Name="BlockName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LoweRoof" Type="Int32" />
+          <Property Name="UpperRoof" Type="Int32" />
+          <Property Name="BlockQty" Type="Int32" />
+          <NavigationProperty Name="ProjectMaster" Relationship="ConstructionDBModel.FK_BlockDetails_ProjectMaster" FromRole="BlockDetail" ToRole="ProjectMaster" />
+        </EntityType>
+        <EntityType Name="BoqDailyProcess">
+          <Key>
+            <PropertyRef Name="DId" />
+          </Key>
+          <Property Name="DId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkdonePer" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BOQId" Type="Int64" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="WorkdoneType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BoqEntryDetail">
+          <Key>
+            <PropertyRef Name="BOQId" />
+          </Key>
+          <Property Name="BOQId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int64" />
+          <Property Name="DescriptionId" Type="Int64" />
+          <Property Name="DescriptionName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MainItemId" Type="Int64" />
+          <Property Name="MainItem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubItem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubSubItem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BoqRef" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Task" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UnitRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalCost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="WorkdonePer" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Duration" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Priority" Type="Int64" />
+          <Property Name="RefId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TaskId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int64" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Workdonedate" Type="DateTime" Precision="3" />
+          <Property Name="BOQType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BOQRefId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Workdonecost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Flag" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="dep" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Predec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Criticaltaskid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RVStartDate" Type="DateTime" Precision="3" />
+          <Property Name="RVEndDate" Type="DateTime" Precision="3" />
+          <Property Name="RDuration" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="BoqReviseDetail">
+          <Key>
+            <PropertyRef Name="ReviseId" />
+          </Key>
+          <Property Name="ReviseId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOQId" Type="Int64" Nullable="false" />
+          <Property Name="ReviseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RStartDate" Type="DateTime" Precision="3" />
+          <Property Name="REndDate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="Flag" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="FDate" Type="DateTime" Precision="3" />
+          <Property Name="ProjectId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ClientCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ClientName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TaxNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HandPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UintNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Building" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateCode" Type="Int32" />
+          <Property Name="Pincode" Type="Int64" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="NoofUser" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExprieDate" Type="DateTime" Precision="3" />
+          <Property Name="Modfied_Date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Company" Relationship="ConstructionDBModel.FK_Client_Company" FromRole="Client" ToRole="Company" />
+          <NavigationProperty Name="Country" Relationship="ConstructionDBModel.FK_Client_Country" FromRole="Client" ToRole="Country" />
+          <NavigationProperty Name="DatabaseDetails" Relationship="ConstructionDBModel.FK_DatabaseDetails_Client" FromRole="Client" ToRole="DatabaseDetail" />
+          <NavigationProperty Name="UserRoleMenus" Relationship="ConstructionDBModel.FK_UserRoleMenu_Client" FromRole="Client" ToRole="UserRoleMenu" />
+          <NavigationProperty Name="SupplierMasters" Relationship="ConstructionDBModel.FK_SupplierMaster_Client" FromRole="Client" ToRole="SupplierMaster" />
+          <NavigationProperty Name="UserDetails" Relationship="ConstructionDBModel.FK_User_Client" FromRole="Client" ToRole="UserDetail" />
+          <NavigationProperty Name="HolidayMasters" Relationship="ConstructionDBModel.FK_HolidayMaster_Client" FromRole="Client" ToRole="HolidayMaster" />
+        </EntityType>
+        <EntityType Name="ClientMaster">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <Property Name="ClientCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ClientName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TaxNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HandPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UintNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Building" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateCode" Type="Int32" />
+          <Property Name="Pincode" Type="Int64" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="ProjectMasters" Relationship="ConstructionDBModel.FK_ProjectMaster_ClientMaster" FromRole="ClientMaster" ToRole="ProjectMaster" />
+        </EntityType>
+        <EntityType Name="ClientReg">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TaxNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HandPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UintNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Building" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateCode" Type="Int32" />
+          <Property Name="Pincode" Type="Int64" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="NoofUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modfied_Date" Type="DateTime" Precision="3" />
+          <Property Name="License" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UintNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Building" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateCode" Type="Int32" />
+          <Property Name="Pincode" Type="Int64" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorisedPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HandPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clients" Relationship="ConstructionDBModel.FK_Client_Company" FromRole="Company" ToRole="Client" />
+          <NavigationProperty Name="DatabaseDetails" Relationship="ConstructionDBModel.FK_DatabaseDetails_Company" FromRole="Company" ToRole="DatabaseDetail" />
+          <NavigationProperty Name="UserRoleMenus" Relationship="ConstructionDBModel.FK_UserRoleMenu_Company" FromRole="Company" ToRole="UserRoleMenu" />
+          <NavigationProperty Name="UserDetails" Relationship="ConstructionDBModel.FK_User_Company" FromRole="Company" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Country_TimeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="ConstructionDBModel.FK_Client_Country" FromRole="Country" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="DatabaseDetail">
+          <Key>
+            <PropertyRef Name="DatabaseId" />
+          </Key>
+          <Property Name="DatabaseId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <Property Name="Server_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DB_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DB_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DB_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="ConstructionDBModel.FK_DatabaseDetails_Client" FromRole="DatabaseDetail" ToRole="Client" />
+          <NavigationProperty Name="Company" Relationship="ConstructionDBModel.FK_DatabaseDetails_Company" FromRole="DatabaseDetail" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="FoundationDetail">
+          <Key>
+            <PropertyRef Name="FoundationId" />
+          </Key>
+          <Property Name="FoundationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <Property Name="FoundationName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectMaster" Relationship="ConstructionDBModel.FK_FoundationDetails_ProjectMaster" FromRole="FoundationDetail" ToRole="ProjectMaster" />
+        </EntityType>
+        <EntityType Name="LocationMaster">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MainItemMaster">
+          <Key>
+            <PropertyRef Name="MainItemId" />
+          </Key>
+          <Property Name="MainItemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <Property Name="MainItemName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="ProjectMaster" Relationship="ConstructionDBModel.FK_MainItemMaster_ProjectMaster" FromRole="MainItemMaster" ToRole="ProjectMaster" />
+        </EntityType>
+        <EntityType Name="MenuDetail">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Name="MID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Formname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RouteName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="UserRoleMenus" Relationship="ConstructionDBModel.FK_UserRoleMenu_MenuDetails" FromRole="MenuDetail" ToRole="UserRoleMenu" />
+        </EntityType>
+        <EntityType Name="ProjectDescription">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="Int64" Nullable="false" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <Property Name="Foundation" Type="Int32" />
+          <Property Name="Basement" Type="Int32" />
+          <Property Name="Podium" Type="Int32" />
+          <Property Name="Mezanine" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="ProjectMaster" Relationship="ConstructionDBModel.FK_ProjectDescription_ProjectMaster" FromRole="ProjectDescription" ToRole="ProjectMaster" />
+        </EntityType>
+        <EntityType Name="ProjectDescriptionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefId" Type="Int64" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProjectMaster">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectLocation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectIncharge" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Start_Date" Type="DateTime" Precision="3" />
+          <Property Name="End_Date" Type="DateTime" Precision="3" />
+          <Property Name="ProjectDuration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="BlockDetails" Relationship="ConstructionDBModel.FK_BlockDetails_ProjectMaster" FromRole="ProjectMaster" ToRole="BlockDetail" />
+          <NavigationProperty Name="ClientMaster" Relationship="ConstructionDBModel.FK_ProjectMaster_ClientMaster" FromRole="ProjectMaster" ToRole="ClientMaster" />
+          <NavigationProperty Name="FoundationDetails" Relationship="ConstructionDBModel.FK_FoundationDetails_ProjectMaster" FromRole="ProjectMaster" ToRole="FoundationDetail" />
+          <NavigationProperty Name="MainItemMasters" Relationship="ConstructionDBModel.FK_MainItemMaster_ProjectMaster" FromRole="ProjectMaster" ToRole="MainItemMaster" />
+          <NavigationProperty Name="ProjectDescriptions" Relationship="ConstructionDBModel.FK_ProjectDescription_ProjectMaster" FromRole="ProjectMaster" ToRole="ProjectDescription" />
+          <NavigationProperty Name="ExternalWorkDetails" Relationship="ConstructionDBModel.FK_ExternalWorkDetails_ProjectMaster" FromRole="ProjectMaster" ToRole="ExternalWorkDetail" />
+        </EntityType>
+        <EntityType Name="SubItemMaster">
+          <Key>
+            <PropertyRef Name="SubItemId" />
+          </Key>
+          <Property Name="SubItemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainItemId" Type="Int64" Nullable="false" />
+          <Property Name="SubItemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubItemDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="SubSubItemMasters" Relationship="ConstructionDBModel.FK_SubSubItemMaster_SubItemMaster" FromRole="SubItemMaster" ToRole="SubSubItemMaster" />
+        </EntityType>
+        <EntityType Name="SubSubItemMaster">
+          <Key>
+            <PropertyRef Name="SubSubItemId" />
+          </Key>
+          <Property Name="SubSubItemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubItemId" Type="Int64" Nullable="false" />
+          <Property Name="SubSubItemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubSubItemDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="SubItemMaster" Relationship="ConstructionDBModel.FK_SubSubItemMaster_SubItemMaster" FromRole="SubSubItemMaster" ToRole="SubItemMaster" />
+          <NavigationProperty Name="SubSubItemMaster1" Relationship="ConstructionDBModel.FK_SubSubItemMaster_SubSubItemMaster" FromRole="SubSubItemMaster" ToRole="SubSubItemMaster1" />
+          <NavigationProperty Name="SubSubItemMaster2" Relationship="ConstructionDBModel.FK_SubSubItemMaster_SubSubItemMaster" FromRole="SubSubItemMaster1" ToRole="SubSubItemMaster" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="User_RoleId" />
+          </Key>
+          <Property Name="User_RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="UserRoleMenus" Relationship="ConstructionDBModel.FK_UserRoleMenu_UserRole" FromRole="UserRole" ToRole="UserRoleMenu" />
+          <NavigationProperty Name="UserDetails" Relationship="ConstructionDBModel.FK_User_UserRole" FromRole="UserRole" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="UserRoleMenu">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int64" />
+          <Property Name="User_RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MID" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="ConstructionDBModel.FK_UserRoleMenu_Client" FromRole="UserRoleMenu" ToRole="Client" />
+          <NavigationProperty Name="Company" Relationship="ConstructionDBModel.FK_UserRoleMenu_Company" FromRole="UserRoleMenu" ToRole="Company" />
+          <NavigationProperty Name="MenuDetail" Relationship="ConstructionDBModel.FK_UserRoleMenu_MenuDetails" FromRole="UserRoleMenu" ToRole="MenuDetail" />
+          <NavigationProperty Name="UserRole" Relationship="ConstructionDBModel.FK_UserRoleMenu_UserRole" FromRole="UserRoleMenu" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserValidity">
+          <Key>
+            <PropertyRef Name="ValidityId" />
+          </Key>
+          <Property Name="ValidityId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <Property Name="MaintanceDate" Type="DateTime" Precision="3" />
+          <Property Name="ExprieDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VariationMaster">
+          <Key>
+            <PropertyRef Name="VID" />
+          </Key>
+          <Property Name="VID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int64" />
+          <Property Name="ClientId" Type="Int64" />
+          <Property Name="VariationName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_BlockDetails_ProjectMaster">
+          <End Type="ConstructionDBModel.ProjectMaster" Role="ProjectMaster" Multiplicity="1" />
+          <End Type="ConstructionDBModel.BlockDetail" Role="BlockDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="BlockDetail">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Company">
+          <End Type="ConstructionDBModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="ConstructionDBModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Country">
+          <End Type="ConstructionDBModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="ConstructionDBModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatabaseDetails_Client">
+          <End Type="ConstructionDBModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="ConstructionDBModel.DatabaseDetail" Role="DatabaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="DatabaseDetail">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMenu_Client">
+          <End Type="ConstructionDBModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="ConstructionDBModel.UserRoleMenu" Role="UserRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="UserRoleMenu">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectMaster_ClientMaster">
+          <End Type="ConstructionDBModel.ClientMaster" Role="ClientMaster" Multiplicity="1" />
+          <End Type="ConstructionDBModel.ProjectMaster" Role="ProjectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ProjectMaster">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatabaseDetails_Company">
+          <End Type="ConstructionDBModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="ConstructionDBModel.DatabaseDetail" Role="DatabaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="DatabaseDetail">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMenu_Company">
+          <End Type="ConstructionDBModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="ConstructionDBModel.UserRoleMenu" Role="UserRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="UserRoleMenu">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoundationDetails_ProjectMaster">
+          <End Type="ConstructionDBModel.ProjectMaster" Role="ProjectMaster" Multiplicity="1" />
+          <End Type="ConstructionDBModel.FoundationDetail" Role="FoundationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="FoundationDetail">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainItemMaster_ProjectMaster">
+          <End Type="ConstructionDBModel.ProjectMaster" Role="ProjectMaster" Multiplicity="1" />
+          <End Type="ConstructionDBModel.MainItemMaster" Role="MainItemMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="MainItemMaster">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMenu_MenuDetails">
+          <End Type="ConstructionDBModel.MenuDetail" Role="MenuDetail" Multiplicity="1" />
+          <End Type="ConstructionDBModel.UserRoleMenu" Role="UserRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuDetail">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="UserRoleMenu">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectDescription_ProjectMaster">
+          <End Type="ConstructionDBModel.ProjectMaster" Role="ProjectMaster" Multiplicity="1" />
+          <End Type="ConstructionDBModel.ProjectDescription" Role="ProjectDescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectDescription">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubSubItemMaster_SubItemMaster">
+          <End Type="ConstructionDBModel.SubItemMaster" Role="SubItemMaster" Multiplicity="1" />
+          <End Type="ConstructionDBModel.SubSubItemMaster" Role="SubSubItemMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubItemMaster">
+              <PropertyRef Name="SubItemId" />
+            </Principal>
+            <Dependent Role="SubSubItemMaster">
+              <PropertyRef Name="SubItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubSubItemMaster_SubSubItemMaster">
+          <End Type="ConstructionDBModel.SubSubItemMaster" Role="SubSubItemMaster" Multiplicity="1" />
+          <End Type="ConstructionDBModel.SubSubItemMaster" Role="SubSubItemMaster1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SubSubItemMaster">
+              <PropertyRef Name="SubSubItemId" />
+            </Principal>
+            <Dependent Role="SubSubItemMaster1">
+              <PropertyRef Name="SubSubItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMenu_UserRole">
+          <End Type="ConstructionDBModel.UserRole" Role="UserRole" Multiplicity="1" />
+          <End Type="ConstructionDBModel.UserRoleMenu" Role="UserRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="User_RoleId" />
+            </Principal>
+            <Dependent Role="UserRoleMenu">
+              <PropertyRef Name="User_RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SupplierMaster">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modfied_Date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="ConstructionDBModel.FK_SupplierMaster_Client" FromRole="SupplierMaster" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_SupplierMaster_Client">
+          <End Type="ConstructionDBModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="ConstructionDBModel.SupplierMaster" Role="SupplierMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="SupplierMaster">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserPassReset">
+          <Key>
+            <PropertyRef Name="UserRestId" />
+          </Key>
+          <Property Name="UserRestId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Up_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int64" />
+          <Property Name="ClientCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_Role_Id" Type="Int32" Nullable="false" />
+          <Property Name="MaintanceDate" Type="DateTime" Precision="3" />
+          <Property Name="ExprieDate" Type="DateTime" Precision="3" />
+          <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Modified_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Modfied_Date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Loginuser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="SupplierId" Type="Int64" />
+          <NavigationProperty Name="Client" Relationship="ConstructionDBModel.FK_User_Client" FromRole="UserDetail" ToRole="Client" />
+          <NavigationProperty Name="Company" Relationship="ConstructionDBModel.FK_User_Company" FromRole="UserDetail" ToRole="Company" />
+          <NavigationProperty Name="UserRole" Relationship="ConstructionDBModel.FK_User_UserRole" FromRole="UserDetail" ToRole="UserRole" />
+        </EntityType>
+        <Association Name="FK_User_Client">
+          <End Type="ConstructionDBModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="ConstructionDBModel.UserDetail" Role="UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Company">
+          <End Type="ConstructionDBModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="ConstructionDBModel.UserDetail" Role="UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserRole">
+          <End Type="ConstructionDBModel.UserRole" Role="UserRole" Multiplicity="1" />
+          <End Type="ConstructionDBModel.UserDetail" Role="UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="User_RoleId" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="User_Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BOQLinkDetail">
+          <Key>
+            <PropertyRef Name="BoqLinkId" />
+          </Key>
+          <Property Name="BoqLinkId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOQId" Type="Int64" />
+          <Property Name="ProjectId" Type="Int64" />
+          <Property Name="TaskId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SourceId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TargetId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LinkType" Type="Int32" />
+          <Property Name="Mcolor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Flag" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CriticalPathDetail">
+          <Key>
+            <PropertyRef Name="CriticalId" />
+          </Key>
+          <Property Name="CriticalId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int64" />
+          <Property Name="BOQId" Type="Int64" />
+          <Property Name="TaskId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BOQRefId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dep" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Duration" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ES" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EF" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Predec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LS" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LF" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Slack" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Criticaltaskid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Flag" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HolidayMaster">
+          <Key>
+            <PropertyRef Name="HId" />
+          </Key>
+          <Property Name="HId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <Property Name="HolidayName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HolidayDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="ConstructionDBModel.FK_HolidayMaster_Client" FromRole="HolidayMaster" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_HolidayMaster_Client">
+          <End Type="ConstructionDBModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="ConstructionDBModel.HolidayMaster" Role="HolidayMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="HolidayMaster">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ExternalWorkDetail">
+          <Key>
+            <PropertyRef Name="ExDetId" />
+          </Key>
+          <Property Name="ExDetId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <Property Name="ExternalWork" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Units" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <NavigationProperty Name="ProjectMaster" Relationship="ConstructionDBModel.FK_ExternalWorkDetails_ProjectMaster" FromRole="ExternalWorkDetail" ToRole="ProjectMaster" />
+        </EntityType>
+        <EntityType Name="ExternalWorkMaster">
+          <Key>
+            <PropertyRef Name="ExId" />
+          </Key>
+          <Property Name="ExId" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalWork" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_ExternalWorkDetails_ProjectMaster">
+          <End Type="ConstructionDBModel.ProjectMaster" Role="ProjectMaster" Multiplicity="1" />
+          <End Type="ConstructionDBModel.ExternalWorkDetail" Role="ExternalWorkDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ExternalWorkDetail">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConstructionDBModelStoreContainer" CdmEntityContainer="ConstructionDBEntities">
+          <EntitySetMapping Name="BlockDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.BlockDetail">
+              <MappingFragment StoreEntitySet="BlockDetails">
+                <ScalarProperty Name="BlockQty" ColumnName="BlockQty" />
+                <ScalarProperty Name="UpperRoof" ColumnName="UpperRoof" />
+                <ScalarProperty Name="LoweRoof" ColumnName="LoweRoof" />
+                <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoqDailyProcesses">
+            <EntityTypeMapping TypeName="ConstructionDBModel.BoqDailyProcess">
+              <MappingFragment StoreEntitySet="BoqDailyProcess">
+                <ScalarProperty Name="WorkdoneType" ColumnName="WorkdoneType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+                <ScalarProperty Name="WorkdonePer" ColumnName="WorkdonePer" />
+                <ScalarProperty Name="DId" ColumnName="DId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoqEntryDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.BoqEntryDetail">
+              <MappingFragment StoreEntitySet="BoqEntryDetails">
+                <ScalarProperty Name="RDuration" ColumnName="RDuration" />
+                <ScalarProperty Name="RVEndDate" ColumnName="RVEndDate" />
+                <ScalarProperty Name="RVStartDate" ColumnName="RVStartDate" />
+                <ScalarProperty Name="Criticaltaskid" ColumnName="Criticaltaskid" />
+                <ScalarProperty Name="Predec" ColumnName="Predec" />
+                <ScalarProperty Name="dep" ColumnName="dep" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Workdonecost" ColumnName="Workdonecost" />
+                <ScalarProperty Name="BOQRefId" ColumnName="BOQRefId" />
+                <ScalarProperty Name="BOQType" ColumnName="BOQType" />
+                <ScalarProperty Name="Workdonedate" ColumnName="Workdonedate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="WorkdonePer" ColumnName="WorkdonePer" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="UnitRate" ColumnName="UnitRate" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="BoqRef" ColumnName="BoqRef" />
+                <ScalarProperty Name="SubSubItem" ColumnName="SubSubItem" />
+                <ScalarProperty Name="SubItem" ColumnName="SubItem" />
+                <ScalarProperty Name="MainItem" ColumnName="MainItem" />
+                <ScalarProperty Name="MainItemId" ColumnName="MainItemId" />
+                <ScalarProperty Name="DescriptionName" ColumnName="DescriptionName" />
+                <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoqReviseDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.BoqReviseDetail">
+              <MappingFragment StoreEntitySet="BoqReviseDetails">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="FDate" ColumnName="FDate" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="REndDate" ColumnName="REndDate" />
+                <ScalarProperty Name="RStartDate" ColumnName="RStartDate" />
+                <ScalarProperty Name="ReviseType" ColumnName="ReviseType" />
+                <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+                <ScalarProperty Name="ReviseId" ColumnName="ReviseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="ConstructionDBModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Modfied_Date" ColumnName="Modfied_Date" />
+                <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="NoofUser" ColumnName="NoofUser" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="UintNo" ColumnName="UintNo" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+                <ScalarProperty Name="HandPhoneNo" ColumnName="HandPhoneNo" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.ClientMaster">
+              <MappingFragment StoreEntitySet="ClientMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="UintNo" ColumnName="UintNo" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+                <ScalarProperty Name="HandPhoneNo" ColumnName="HandPhoneNo" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientRegs">
+            <EntityTypeMapping TypeName="ConstructionDBModel.ClientReg">
+              <MappingFragment StoreEntitySet="ClientReg">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Modfied_Date" ColumnName="Modfied_Date" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="NoofUser" ColumnName="NoofUser" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="UintNo" ColumnName="UintNo" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+                <ScalarProperty Name="HandPhoneNo" ColumnName="HandPhoneNo" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="ConstructionDBModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+                <ScalarProperty Name="HandPhoneNo" ColumnName="HandPhoneNo" />
+                <ScalarProperty Name="AuthorisedPerson" ColumnName="AuthorisedPerson" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="UintNo" ColumnName="UintNo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="ConstructionDBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Country_Currency" ColumnName="Country_Currency" />
+                <ScalarProperty Name="Country_TimeZone" ColumnName="Country_TimeZone" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.DatabaseDetail">
+              <MappingFragment StoreEntitySet="DatabaseDetails">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DB_Password" ColumnName="DB_Password" />
+                <ScalarProperty Name="DB_Username" ColumnName="DB_Username" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="Server_Name" ColumnName="Server_Name" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DatabaseId" ColumnName="DatabaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoundationDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.FoundationDetail">
+              <MappingFragment StoreEntitySet="FoundationDetails">
+                <ScalarProperty Name="FoundationName" ColumnName="FoundationName" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="FoundationId" ColumnName="FoundationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.LocationMaster">
+              <MappingFragment StoreEntitySet="LocationMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainItemMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.MainItemMaster">
+              <MappingFragment StoreEntitySet="MainItemMaster">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="MainItemName" ColumnName="MainItemName" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="MainItemId" ColumnName="MainItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.MenuDetail">
+              <MappingFragment StoreEntitySet="MenuDetails">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+                <ScalarProperty Name="Formname" ColumnName="Formname" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectDescriptions">
+            <EntityTypeMapping TypeName="ConstructionDBModel.ProjectDescription">
+              <MappingFragment StoreEntitySet="ProjectDescription">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Mezanine" ColumnName="Mezanine" />
+                <ScalarProperty Name="Podium" ColumnName="Podium" />
+                <ScalarProperty Name="Basement" ColumnName="Basement" />
+                <ScalarProperty Name="Foundation" ColumnName="Foundation" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="PDId" ColumnName="PDId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectDescriptionDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.ProjectDescriptionDetail">
+              <MappingFragment StoreEntitySet="ProjectDescriptionDetails">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.ProjectMaster">
+              <MappingFragment StoreEntitySet="ProjectMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProjectDuration" ColumnName="ProjectDuration" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ProjectIncharge" ColumnName="ProjectIncharge" />
+                <ScalarProperty Name="ProjectLocation" ColumnName="ProjectLocation" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubItemMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.SubItemMaster">
+              <MappingFragment StoreEntitySet="SubItemMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubItemDescription" ColumnName="SubItemDescription" />
+                <ScalarProperty Name="SubItemName" ColumnName="SubItemName" />
+                <ScalarProperty Name="MainItemId" ColumnName="MainItemId" />
+                <ScalarProperty Name="SubItemId" ColumnName="SubItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubSubItemMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.SubSubItemMaster">
+              <MappingFragment StoreEntitySet="SubSubItemMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubSubItemDescription" ColumnName="SubSubItemDescription" />
+                <ScalarProperty Name="SubSubItemName" ColumnName="SubSubItemName" />
+                <ScalarProperty Name="SubItemId" ColumnName="SubItemId" />
+                <ScalarProperty Name="SubSubItemId" ColumnName="SubSubItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="ConstructionDBModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+                <ScalarProperty Name="User_RoleId" ColumnName="User_RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleMenus">
+            <EntityTypeMapping TypeName="ConstructionDBModel.UserRoleMenu">
+              <MappingFragment StoreEntitySet="UserRoleMenu">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="User_RoleId" ColumnName="User_RoleId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserValidities">
+            <EntityTypeMapping TypeName="ConstructionDBModel.UserValidity">
+              <MappingFragment StoreEntitySet="UserValidity">
+                <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+                <ScalarProperty Name="MaintanceDate" ColumnName="MaintanceDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ValidityId" ColumnName="ValidityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariationMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.VariationMaster">
+              <MappingFragment StoreEntitySet="VariationMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="VariationName" ColumnName="VariationName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="VID" ColumnName="VID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.SupplierMaster">
+              <MappingFragment StoreEntitySet="SupplierMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Modfied_Date" ColumnName="Modfied_Date" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPassResets">
+            <EntityTypeMapping TypeName="ConstructionDBModel.UserPassReset">
+              <MappingFragment StoreEntitySet="UserPassReset">
+                <ScalarProperty Name="Up_Date" ColumnName="Up_Date" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserRestId" ColumnName="UserRestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Loginuser" ColumnName="Loginuser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Modfied_Date" ColumnName="Modfied_Date" />
+                <ScalarProperty Name="Modified_by" ColumnName="Modified_by" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+                <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+                <ScalarProperty Name="MaintanceDate" ColumnName="MaintanceDate" />
+                <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOQLinkDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.BOQLinkDetail">
+              <MappingFragment StoreEntitySet="BOQLinkDetails">
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Mcolor" ColumnName="Mcolor" />
+                <ScalarProperty Name="LinkType" ColumnName="LinkType" />
+                <ScalarProperty Name="TargetId" ColumnName="TargetId" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+                <ScalarProperty Name="BoqLinkId" ColumnName="BoqLinkId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CriticalPathDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.CriticalPathDetail">
+              <MappingFragment StoreEntitySet="CriticalPathDetails">
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Criticaltaskid" ColumnName="Criticaltaskid" />
+                <ScalarProperty Name="Slack" ColumnName="Slack" />
+                <ScalarProperty Name="LF" ColumnName="LF" />
+                <ScalarProperty Name="LS" ColumnName="LS" />
+                <ScalarProperty Name="Predec" ColumnName="Predec" />
+                <ScalarProperty Name="EF" ColumnName="EF" />
+                <ScalarProperty Name="ES" ColumnName="ES" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="dep" ColumnName="dep" />
+                <ScalarProperty Name="BOQRefId" ColumnName="BOQRefId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="BOQId" ColumnName="BOQId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="CriticalId" ColumnName="CriticalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HolidayMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.HolidayMaster">
+              <MappingFragment StoreEntitySet="HolidayMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+                <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="HId" ColumnName="HId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalWorkDetails">
+            <EntityTypeMapping TypeName="ConstructionDBModel.ExternalWorkDetail">
+              <MappingFragment StoreEntitySet="ExternalWorkDetails">
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="ExternalWork" ColumnName="ExternalWork" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ExDetId" ColumnName="ExDetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalWorkMasters">
+            <EntityTypeMapping TypeName="ConstructionDBModel.ExternalWorkMaster">
+              <MappingFragment StoreEntitySet="ExternalWorkMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExternalWork" ColumnName="ExternalWork" />
+                <ScalarProperty Name="ExId" ColumnName="ExId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

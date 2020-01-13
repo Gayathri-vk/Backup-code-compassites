@@ -1,0 +1,42 @@
+.tabscol{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+
+    .tabs_blk{
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        padding-bottom: 0 !important;
+        margin-bottom: 0px !important;
+        .tabslist{
+            border-bottom-style: solid;
+            border-bottom-color:#fff;
+            .datepickr{
+                color:#000;
+            }
+            li{
+                width:120px;
+                a{
+                    border-bottom-style: solid;
+                    border-bottom-color:#fff;
+                    color: #d3d3d3;
+                    .fa-calendar{
+                        color:#ff3076;
+                        margin-right: 10px;
+
+                    }
+                }
+            }
+        }
+        li.is-active a{
+            color:#000 !important;
+            border-bottom:3px solid #ff3076 !important;
+        }
+    }
+}
+.fa-angle-down{
+    margin-left: 13px;
+    color:#d0d0d0 !important;
+}
+.container_block{
+    background: #ecf1f5;
+}

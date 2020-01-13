@@ -1,0 +1,42 @@
+<div class="example-container">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="subsubItems">
+      <mat-header-cell *matHeaderCellDef> SUB-SUB-ITEM </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subsubItems}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="boqref">
+      <mat-header-cell *matHeaderCellDef> BOQ REFERENCE </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.boqref}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="task">
+      <mat-header-cell *matHeaderCellDef> TASK </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.task}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="unit">
+      <mat-header-cell *matHeaderCellDef> Unit </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.unit}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="unitRate">
+      <mat-header-cell *matHeaderCellDef> Unit Rate </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.unitRate}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="TotalCost">
+      <mat-header-cell *matHeaderCellDef> Total Cost </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.TotalCost}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

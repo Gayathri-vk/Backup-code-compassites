@@ -1,0 +1,80 @@
+<button mat-fab color="primary" class="addCountry" (click)="addCountry()">Add</button>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+
+
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Country_Name">
+      <mat-header-cell *matHeaderCellDef> Country Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Country_Name}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Country_Code">
+      <mat-header-cell *matHeaderCellDef> Country Code </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Country_Code}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Country_TimeZone">
+      <mat-header-cell *matHeaderCellDef> Country TimeZone </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Country_TimeZone}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Country_Currency">
+      <mat-header-cell *matHeaderCellDef> Country Currency </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Country_Currency}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon class="example-icon" (click)="editCountry(element)" matTooltip="Edit">mode_edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="countryForm" (ngSubmit)="countrySubmit()">
+
+    <mat-form-field>
+      <input matInput formControlName="Country_Name" placeholder="Country Name">
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput formControlName="Country_Code" placeholder="Country Code">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Country_TimeZone" placeholder="Country TimeZone">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Country_Currency" placeholder="Country Currency">
+    </mat-form-field>
+    <div class="radioData">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="0">InActive</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!countryForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+  </form>
+</ngu-modal>

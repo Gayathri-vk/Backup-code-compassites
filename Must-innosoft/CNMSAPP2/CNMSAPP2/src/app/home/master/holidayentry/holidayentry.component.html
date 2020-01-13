@@ -1,0 +1,77 @@
+<button mat-fab color="primary" class="addClient" (click)="addUser()">Add</button>
+
+<div class="example-container mat-elevation-z2">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+
+
+    <ng-container matColumnDef="ClientName">
+      <mat-header-cell *matHeaderCellDef> User Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ClientName}} </mat-cell>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="HolidayName">
+      <mat-header-cell *matHeaderCellDef> Holiday</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.HolidayName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="HolidayDate">
+      <mat-header-cell *matHeaderCellDef> Holiday Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.HolidayDate | date:'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon class="example-icon" (click)="editUser(element)" matTooltip="Edit">mode_edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="holidayForm" (ngSubmit)="userSubmit()">
+
+    <mat-form-field>
+      <mat-select placeholder="User Company" formControlName="ClientId">
+        <mat-option *ngFor="let comp of clientList" [value]="comp.ClientId">
+          {{ comp.ClientName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="HolidayName" placeholder="Holiday">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" formControlName="HolidayDate" placeholder="Holiday Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="radioData">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="0">InActive</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!holidayForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+  </form>
+</ngu-modal>

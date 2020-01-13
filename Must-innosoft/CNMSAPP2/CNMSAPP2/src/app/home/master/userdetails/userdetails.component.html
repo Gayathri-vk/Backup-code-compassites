@@ -1,0 +1,136 @@
+<button mat-fab color="primary" class="addClient" (click)="addUser()">Add</button>
+
+<div class="example-container mat-elevation-z2">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+
+
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="CompanyName">
+      <mat-header-cell *matHeaderCellDef> Software Provider Company </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CompanyName}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Username">
+      <mat-header-cell *matHeaderCellDef> User Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Username}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Password">
+      <mat-header-cell *matHeaderCellDef> Password </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Password}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Role_Name">
+      <mat-header-cell *matHeaderCellDef> Role Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Role_Name}} </mat-cell>
+    </ng-container>
+
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ClientName">
+      <mat-header-cell *matHeaderCellDef> User Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ClientName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ClientCode">
+      <mat-header-cell *matHeaderCellDef> User Company Code </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ClientCode}} </mat-cell>
+    </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Loginuser">
+      <mat-header-cell *matHeaderCellDef> Login User Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Loginuser}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Designation">
+      <mat-header-cell *matHeaderCellDef> Designation </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Designation}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon class="example-icon" (click)="editUser(element)" matTooltip="Edit">mode_edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="userForm" (ngSubmit)="userSubmit()">
+    <mat-form-field>
+      <mat-select placeholder="Software Provider Company" formControlName="CompanyId">
+        <mat-option *ngFor="let comp of companyList" [value]="comp.CompanyId">
+          {{ comp.CompanyName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <mat-form-field>
+      <mat-select placeholder="User Company" formControlName="ClientId">
+        <mat-option *ngFor="let comp of clientList" [value]="comp.ClientId">
+          {{ comp.ClientName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <input matInput formControlName="ClientCode" readonly="true" placeholder="User Company Code"  >
+    </mat-form-field> -->
+    <mat-form-field>
+      <input matInput formControlName="Username" placeholder="User Id">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="Password" placeholder="Password">
+    </mat-form-field>
+    <mat-form-field *ngIf="userRole === 0">
+      <mat-select placeholder="User Role" formControlName="User_Role_Id">
+        <mat-option *ngFor="let comp of roleList" [value]="comp.User_RoleId">
+          {{ comp.Role_Name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Loginuser" placeholder="Login User Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="Designation" placeholder="Designation">
+    </mat-form-field>
+    <div class="radioData">
+      <mat-radio-group formControlName="Type">
+        <mat-radio-button value="0">None</mat-radio-button>
+        <mat-radio-button value="1">Supplier</mat-radio-button>
+        <mat-radio-button value="2">Contractor</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-form-field>
+      <mat-select placeholder="Supplier/Contractor" formControlName="SupplierId">
+        <mat-option *ngFor="let comp of supplierList" [value]="comp.SupplierId">
+          {{ comp.SupplierName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="radioData">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="0">InActive</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!userForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+  </form>
+</ngu-modal>

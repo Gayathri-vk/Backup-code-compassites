@@ -1,0 +1,122 @@
+<button mat-fab color="primary" class="addClient" (click)="addUsermenu()">Add</button>
+
+<div class="example-container mat-elevation-z2">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table #table [dataSource]="dataSource">
+
+
+
+
+    <ng-container matColumnDef="CompanyName">
+      <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CompanyName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ClientName">
+      <mat-header-cell *matHeaderCellDef> Client Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ClientName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Role_Name">
+      <mat-header-cell *matHeaderCellDef> Role Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Role_Name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Formname">
+      <mat-header-cell *matHeaderCellDef> Form Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Formname}} </mat-cell>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <!-- <mat-icon class="example-icon" (click)="editUsermenu(element)" matTooltip="Edit">mode_edit</mat-icon> -->
+        <mat-icon color="warn" (click)="editUsermenu(element.UID)">delete</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<ngu-modal [MIndex]="sampleText">
+  <h4 class="modalTile">{{modalTitle}}</h4>
+  <form [formGroup]="userForm" (ngSubmit)="usermenuSubmit()">
+    <mat-form-field>
+      <mat-select placeholder="Company" formControlName="CompanyId">
+        <mat-option *ngFor="let comp of companyList" [value]="comp.CompanyId">
+          {{ comp.CompanyName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Client" formControlName="ClientId">
+        <mat-option *ngFor="let comp of clientList" [value]="comp.ClientId">
+          {{ comp.ClientName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="User Role" formControlName="User_RoleId">
+        <mat-option *ngFor="let comp of roleList" [value]="comp.User_RoleId">
+          {{ comp.Role_Name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+      <mat-select placeholder="Form Menu" formControlName="MID">
+        <mat-option *ngFor="let comp of menulist" [value]="comp.MID">
+          {{ comp.Formname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+
+
+    <!-- <mat-checkbox> Hi </mat-checkbox> -->
+    <!-- <div *ngFor="let interest of menulist; let i = index">
+      <mat-radio-button class="example-margin" [value]="interest.MID">{{interest.Formname}}</mat-radio-button>
+    </div> -->
+
+    <mat-list-item class="primary-imenu-item" role="listitem">
+      <mat-form-field class="select-form">
+        <mat-select placeholder="Form Menu" name="year" formControlName="MID" class="filter-select" [compareWith]="equals" multiple>
+          <!-- <mat-option disabled="disabled" class="filter-option">
+            <button mat-raised-button class="mat-primary fill text-sm" (click)="selectAll(yearSelect, menulist)">
+              Select All
+            </button>
+            <button mat-raised-button class="mat-accent fill text-sm" (click)="deselectAll(yearSelect)">
+              Deselect All
+            </button>
+          </mat-option> -->
+          <mat-option *ngFor="let year of menulist" [value]="year.MID">
+            {{year.Formname}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-list-item>
+    <!-- <div class="radioData">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="0">InActive</mat-radio-button>
+      </mat-radio-group>
+    </div> -->
+    <button type="submit" mat-raised-button color="primary" [disabled]="!userForm.valid">Save</button>
+    <button type="button" (click)="closeModal()" mat-raised-button color="warn">Close</button>
+    <!-- <pre>{{ userForm.value | json }}</pre> -->
+  </form>
+</ngu-modal>

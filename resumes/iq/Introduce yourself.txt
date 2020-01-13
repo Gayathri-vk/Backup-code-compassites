@@ -1,0 +1,142 @@
+It has been a pleasure working for your esteemed company for the last [probation period, six month for example]. As you are aware, my probation period is over. During this time, I had enough time to evaluate my position at [the company name] and reached the conclusion that I have the potential and enthusiasm to deliver excellent results in the capacity of my job. I am delighted to know that you have decided to elevate my status from probative to permanent and I guarantee that you will not regret your decision.
+
+I believe I have proven my abilities during this period and you are convinced that I am the suitable person for the position.
+
+I would really appreciate it if the expression of trust you have put in me can be reflected in my pay and would like to kindly request for my salary to be reviewed based on the circumstances presented within.
+
+Thank you.
+On Mohammad
+
+
+
+
+Name :On Mohammad
+CL:  Bangalore
+TYE:3.2
+RYE:3.2
+Hibernate:2.5
+Spring:1.5
+Email:on.warsi@gmail.com
+cont:7204512047
+c.o:tcs
+ctc:4.2
+ectc :6
+np:15 days
+
+https://www.youtube.com/watch?v=wlkB-DTIyZ4
+
+
+
+
+
+
+
+
+I was looking for a position like this which is an excellent match for my skills and experience and I am not able to fully utilize them in my present job as there is very limited scope of growth. I am interested in a new challenge and an opportunity to use my technical skills and experience in a different capacity than I have in the past.
+
+
+My name is On Mohammad,i belongs to gaya it is in bihar and it is famous due to lord guatam budha 
+My motto of life is “where there is a will there is a way”. 
+
+The  goal of my life is to achieve personal and professional objective
+talking about my qualification ,
+i have completed my B.Tech from West Bengal university of Technolgy(2011).
+i started my career with zenith software in  bangalore from july 11 to march 13 and then join in tcs in april 13 and  till now working.
+
+->My technical skill set consists of technology like CoreJava,Servlet, JSP, and framework like  Spring and Hibernate.
+
+->My latest project is  Healthcare Information System
+
+->Client of this project is Cromwell Hospital, U K.
+
+->Mainly This project is developed for Healthcare Information System.
+--------------------------------------------------------------------------------
+
+ Healthcare information system aids hospital administrators by significantly improving operational control and streamlining operations. It also enables improved response to demands of patient care because it automates the process of collecting, collating and retrieving patient information. By enabling an automated and intelligent flow of patient information, HIS enables hospitals and doctors to better serve their patients. 
+Additionally, HIS provides a host of benefits such as easier patient record management, reduced length of stay, lower staff turnover, greater organizational flexibility, reliable and timely information and hence increased the competitive advantage.
+
+
+
+->It provides information regarding the services and its facility. 
+
+->The home page provides basic options like available 
+for patients,
+for health professionals,
+services and specilities,
+find a  doctor,
+about our hospital etc.,
+
+1:-for patients
+--------------------
+these are the sub module 
+
+1:-Referrals and appointments
+For specific treatments at Bupa Cromwell Hospital you need to be referred to us by a health professional, for others you can refer yourself. Check when you make your appointment if you need to be referred by a health professional.
+2:-Outpatients
+Our outpatient department offers a wide range of services.
+
+1:-Administration of injections
+2:-Blood tests or phlebotomy
+3:-Chronic oedema service
+4:-Diabetic foot service
+6:-Home care management
+7:-Leg ulcer care service
+8:-Minor procedure suite
+9:-Plaster room
+10:-Sample drop-off point
+11:-Surgical wound care
+12:-Test results
+13:-Wound care clinic
+14:-Visual field analysis
+
+
+3:-Inpatients
+4:-Paediatric patients
+5:-International Patient Centre
+6:-Accessing medical records
+7:-Health features
+------------------------------------
+2:-for health professionals
+3:-services and specilities
+4:-find doctor
+5:-about our hospital
+
+I have worked on for patients
+
+->The module manages all the Patients  of the system i.e. Customer, Administrator or Agents.
+
+->It keeps the track of their activities they performs, their data, their access information, etc.
+
+->A new user registers by filling in a form on the web-site.
+
+In this project, I have design the jsp as per the requirement.
+
+Implemented the Command class, Controller Class and Used Validation  for validating the required fields,also used the Tiles framework to centralize the page layout.
+
+for the Middle layer i used the used spring ioc to inject the class dependencies and for Persistence layer i wrote the persistence class and the corresponding hbm.xml file. 
+
+
+A software development process is a structure imposed on the development of a complex software product. 
+There are various steps in software developments-
+1)Requirements.
+2)Design.
+3)Implementation
+4)Validation.
+5)Maintenance.
+
+Design-
+
+Software design is most important steps of developments in this step we makes graphical representations of various classes and method calls to show the flow of projects throughvarious LLDs(Low Level Design) and a HLD(High Level Design)
+
+HLD-HLD contains overview of the design . we can make HLD very easily through VISIO .It refers to the functionality to be achieved to meet the client requirement. Precisely speaking it is a diagrammatic representation of clients operational systems, 
+staging areas, dwh n data marts. also how n what frequency 
+the data is extracted n loaded into the target database.
+
+
+LLD-LLD contains detailed design.i.e. class diagram and sequence diagram are the basic part of LLD,class diagram represents relationship between various classes and sequence diagram represents execution sequence of a specific part.
+It is prepared for every mapping along with unit test 
+plan. It contains the names of source definitions, target 
+definitions, transformations used, column names, data 
+types, business logic written n source to target field 
+matrix, session name, mapping name.
+

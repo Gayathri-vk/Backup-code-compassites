@@ -1,0 +1,151 @@
+.parent-container{
+   margin:0 10px;
+}
+
+
+.card {
+    
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-bottom:20px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.label-items {
+    padding: 2px 16px;
+    margin-top: 7%;
+    padding-bottom: 5%;
+}
+.card-block{
+  padding:0;  
+}
+.card-block .card{
+    height: 395px;
+}
+.label-items a{
+    color:#a59e9e;
+    text-decoration:none;
+}
+.label-items a span:first-child{    
+    padding:5px;
+    background:#005696;
+    border-radius:8%;
+    margin-right: 10px;
+
+}
+.label-items a span:last-child{
+  padding-left:10px;
+  font-size:14px;
+  color:#a59e9e;
+  border-left: 1px solid #9e8d8d;
+  padding-left: 10px;
+}
+.label-items a p{
+    margin-top:10px;
+    color: #7272e0;
+}
+.card-img{
+    text-align:center;
+}
+.card-img img{
+    height: 200px;
+    width:260px;
+}
+.button-list{
+    float:right;
+    padding-right:10px;
+}
+.button-list button{
+    padding: 2px;
+}
+.label-duration span:last-child{
+    float:right;
+}
+.label-duration{
+    padding: 0 15px;
+}
+.comment span,.duration span{
+  font-size:14px;
+}
+.comment span{
+   color:#c5bbbb;
+}
+.button-list p{
+    padding-top:10px;
+    font-size:12px;
+    color:#000;
+}
+.date-published{
+    float:right;
+}
+
+.course-block {
+    display:inline-block;
+    width:100%;
+}
+.course-block ul{
+    float:right;
+    background: #fff;
+    margin:0;
+}
+.img-block{
+    padding:0;
+}
+
+.inner-card{
+    border:1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 21px;
+}
+.edit-info-container{
+    margin:0 auto;
+    width:80%;
+}
+.edit-info-container .card{
+    padding:20px;
+}
+
+.content-text{
+    font-size: 14px;
+    line-height: 24px;
+    color: #6f708b;
+}
+.label-alt{
+    font-size: 14px;
+    color: rgb(38, 39, 59);
+    font-weight: normal;
+}
+
+.anchor-link-tag{
+    text-decoration: none;
+    cursor: default;
+    color: #4a90e2;
+}
+.other-links-block{
+    padding:10px 0px;
+}
+.thumbs-uplink .glyphicon-thumbs-up{
+    font-size: 20px;
+
+}
+.compeleted{
+    background:#fff;
+    border: 1px solid #4bb920;
+    color:#4bb920;
+    padding: 7px;
+    border-radius: 10px;
+}
+.glyphicon-arrow-left{
+    font-size:25px;
+    cursor:pointer;
+}
+.card-block .card{
+    margin:15px;
+}
+.article{
+  padding-left:10px;
+}

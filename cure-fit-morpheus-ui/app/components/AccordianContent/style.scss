@@ -1,0 +1,42 @@
+.whole_card_block{
+    background: #fff;
+    .cardlabel{
+        color:#b3b5c4;
+        font-size: 15px;
+        padding: 10px 32px;
+    }
+    .mar_top{
+        margin-top: 10px;
+    }
+    .objcontent{
+        color: #464751;
+        font-weight: 800;
+        font-size: 12px;
+        padding: 0px 32px;
+    }
+    .cardsdetails{
+        background: #f6f9fe;
+        margin-bottom: 20px !important;
+        margin-left: 0;
+    }
+    .cardcol{
+        padding: 0px 32px;
+    }
+    .reviewcontent{
+        color:#272b36;
+        font-size: 13px;
+    }
+    .addproject{
+        color: #ff3277;
+        font-size: 14px;
+        padding-bottom: 12px;
+    }
+}
+.accordion-toggle:after {
+    font-family: 'FontAwesome';
+    content: "\f078";
+    float: right;
+}
+.fa-user-plus{
+    margin-right: 10px;
+}

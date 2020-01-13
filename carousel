@@ -1,0 +1,72 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	<ol class="carousel-indicators">
+	<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+	</ol>
+	<div class="carousel-inner">
+	<div class="carousel-item active">
+	<div class="row">
+	  <div class="col-md-7">
+	     <h3>Must 365 Cost Management innosoft</h3>
+	     <p>Single collaborative online business partner to plan and manage ongoing
+	       construction projects,resources,timelines and budgets at your own comfort from anywhere
+	       on any device throughout 365 days under one MUST cloud platform.
+	     </p>
+	  </div>
+	  <div class="col-md-5 slide-img">
+	      <img src="assets/images/slide1.jpg" alt="ptn2"/>
+	  </div>
+	</div>
+	</div>
+	<div class="carousel-item">
+	  <div class="row">
+	      <div class="col-md-7">
+		 <h3>Supervise Financial Status</h3>
+		 <p> Schedule budgets and timeline,monitor progress and expenses,determine 
+		   profit and loss and compare "budget" versus "actuals".
+		 </p>
+	      </div>
+	      <div class="col-md-5 slide-img">
+		  <img src="assets/images/slide2.jpg" alt="ptn2"/>
+	      </div>
+	    </div>
+	  </div>
+	<div class="carousel-item">
+	  <div class="row">
+	      <div class="col-md-7">
+		 <h3>Simplifying Project Planning,Progess & Reports</h3>
+		 <p>Leverage project online database with all detailed information and utilize various integration
+		   with automatic notification and much more.
+		 </p>
+	      </div>
+	      <div class="col-md-5 slide-img">
+		  <img src="assets/images/slide3.jpg" alt="ptn2"/>
+	      </div>
+	    </div>
+	</div>
+	<div class="carousel-item">
+	    <div class="row">
+		<div class="col-md-7">
+		  <h3>Gain Clarity & Control</h3>
+		   <p>Know the daily work progress status of your project.Real-time
+		     information on performance,progress,resources,timeline,budgets
+		     and productivity
+		   </p>
+		</div>
+		<div class="col-md-5 slide-img">
+		    <img src="assets/images/slide4.jpg" alt="ptn2"/>
+		</div>
+	      </div>
+	  </div>
+	</div>
+	<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+</div>
