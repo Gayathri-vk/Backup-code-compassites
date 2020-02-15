@@ -60,7 +60,7 @@
     "sanitize.css": "4.1.0",
     "warning": "^4.0.1",
     "whatwg-fetch": "2.0.4",
-    "yarn": "^1.9.4"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "2.1.3",
